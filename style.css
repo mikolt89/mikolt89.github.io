@@ -19,7 +19,7 @@ body{
   
   font-family:'Josefin Sans', sans serif;
   color: #222;
-  widht: auto;
+  width: auto;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -28,7 +28,7 @@ footer{
   display: relative;
   font-family:'Abril Fatface', sans serif;
   color: #fff;
-  padding: ;
+  padding: 0;
   background-color: #222;
   justify-content: center;
   width: 400px;
@@ -36,7 +36,6 @@ footer{
 
 footer::before {
   content: '"';
-  font-family: ;
   font-size: 50px;
   display: absolute;
   top:0px;
