@@ -1,22 +1,24 @@
 header{
-  background: no-repeat top/100% url("http://stayathome-syllabus.greenfox.academy/week01/assets/first-website-header.png");
-  height: 200px;
-  width: 600px;
+  background-color: beige;
+ 
   font-family:'Abril Fatface', sans serif;
   color: #222;
   display: block;
   display: relative;
 }
 h3{
+  background-color: beige;
   margin-left: 25%;
 }
 h1{
+  background-color: beige;
   margin-left: 25%;
   display: absolute;
   bottom: 10%;
 }
 body{
-  
+  background: repeat top/100% url("https://cdn.wallpapersafari.com/85/64/DgsZLG.jpg");
+  background-color: beige;
   font-family:'Josefin Sans', sans serif;
   color: #222;
   width: auto;
