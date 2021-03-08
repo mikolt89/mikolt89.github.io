@@ -2,28 +2,79 @@ header{
   background-color: rgb(245, 245, 220, 0.8);
  
   font-family:'Abril Fatface', sans serif;
-  color: #222;
   display: block;
   display: relative;
 }
 h3{
   text-transform: uppercase;
-  
-  margin-left: 25%;
+  text-align: center;
+  font-size: 32px;
 }
 h1{
-  margin-left: 25%;
-  display: absolute;
-  bottom: 10%;
+  text-align: center;
+  font-size: 40px;
 }
+h2{
+	text-align: center;
+	background-color: #d9d9d9;
+}
+h5{
+	color: #FFFFFF;
+	background-color: #d9d9d9;
+}
+
 body{
   background: repeat top/100% url("./img/background.png");
   background-color: beige;
   font-family:'Josefin Sans', sans serif;
-  color: #222;
   width: auto;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.kinalat{
+	font-family:'Josefin Sans', sans serif;
+	text-transform: uppercase;
+	font-size: 50px;
+}
+
+.submenu{
+	font-family:'Josefin Sans', sans serif;
+	color: #ffffff;
+	font-size: 30px;
+	background-color: #000000;
+}
+
+.menusor{
+	position: sticky;
+	top: 0;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+
+}
+
+.sora {
+	float: left;
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+}
+.sora a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.sora:hover {
+  background-color: #111;
+}
+
+.active {
+	padding: 14px 16px;
+	background-color: #111;
 }
 
 footer{
@@ -33,7 +84,7 @@ footer{
   padding: 0;
   background-color: #222;
   justify-content: center;
-  width: 400px;
+  width: 1000px;
 }
 
 footer::before {
