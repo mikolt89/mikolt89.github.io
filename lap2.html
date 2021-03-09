@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./img/Darth-Vader.ico">
+  <title>Regisztráció</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@100&family=Merriweather:wght@300&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 id="reg">Regisztráció</h1>
+    <form method="POST">
+        <label>Név: <input type="text" name="name" placeholder="Név..." required/></label> <br/>
+        <label for="faj">Faj:</label>
+            <select name="faj" id="faj">
+            <option value="aiwha">Aiwha</option>
+            <option value="aleena">Aleena</option>
+            <option value="anx">Anx</option>
+            <option value="balosar">Balosar</option>
+            <option value="besalisk ">Besalisk </option>
+            <option value="cereai">Cereai</option>
+            <option value="chagrian">Chagrian</option>
+            <option value="devlikk">Devlikk</option>
+            <option value="dressellian">Dressellian</option>
+            <option value="dug">Dug</option>
+            <option value="gran">Gran</option>
+            <option value="iktotchi">Iktotchi</option>
+            <option value="klatooinian">Klatooinian</option>
+            <option value="muun">Muun</option>
+            <option value="nautolani">Nautolani </option>
+            <option value="seloniai">Seloniai</option>
+            <option value="togruta">Togruta</option>
+            <option value="toydari">Toydari</option>
+            <option value="twilek">Twi&apos;lek</option>
+            </select><br/>
+        <label for="lakhely">Bolygó:</label>
+            <select name="bolygo" id="bolygo">
+            <option value="alderaan">Alderaan</option>
+            <option value="ambria">Ambria</option>
+            <option value="apatros">Apatros</option>
+            <option value="balosar">Balosar</option>
+            <option value="bespin ">Bespin </option>
+            <option value="byss">Byss</option>
+            <option value="christophsis">Christophsis</option>
+            <option value="coruscant">Coruscant</option>
+            <option value="dagobah ">Dagobah </option>
+            <option value="dantooine">Dantooine</option>
+            <option value="endor">Endor</option>
+            <option value="felucia">Felucia</option>
+            <option value="geonosis">Geonosis</option>
+            <option value="hoth">Hoth</option>
+            <option value="illum">Illum </option>
+            <option value="kamino">Kamino</option>
+            <option value="kashyyyk">Kashyyyk</option>
+            <option value="naboo">Naboo</option>
+            <option value="tatooine">Tatooine</option>
+            <option value="egyeb">text</option> <!--text area hogy illesztek be-->
+            </select><br/>
+        <label for="identity">Identitás:</label><br>
+            <input type="radio" id="birodalmi" name="identity" value="birodalmi">
+                <label for="birodalmi">Birodalmi</label><br>
+            <input type="radio" id="koztarsasagi" name="identity" value="koztarsasagi">
+                <label for="koztarsasagi">Köztársasági</label><br>
+        <label for="erdeklodes">Érdeklődés:</label><br>
+        <input type="checkbox" id="erdeklodes" name="aiwha" value="Aiwha">
+            <label for="aiwha"> Aiwha</label><br>
+            <input type="checkbox" id="aleena" name="aleena" value="Aleena">
+            <label for="aleena"> Aleena</label><br>
+            <input type="checkbox" id="anx" name="anx" value="Anx">
+            <label for="anx">Anx</label><br>
+        <input type="submit" value="Regisztráció"/>
+            
+    </form>
+   
+    <footer>
+        <p>Ni guroor <em>gar</em></p>
+      </footer>
+ 
+    
+</body>
+</html>
+    

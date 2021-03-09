@@ -95,3 +95,10 @@ footer::before {
   left: 0px;
   margin:0px;
   }
+
+#reg{
+  background: url("https://cdn.pixabay.com/photo/2017/08/16/05/13/lego-2646527_960_720.jpg"); /*ezeket majd ps kell megfelelő méretre igazízani*/
+  height: 100px;
+}
+
+
