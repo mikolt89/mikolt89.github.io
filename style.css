@@ -1,51 +1,54 @@
-header{
-  background-color: rgb(245, 245, 220, 0.8);
- 
-  font-family:'Abril Fatface', sans serif;
-  display: block;
-  display: relative;
+/* HEADER ES CIMSOROK ELEMEI*/
+
+header {
+	background-color: rgb(245, 245, 220, 0.8);
+	font-family: 'Abril Fatface', sans serif;
+	display: block;
+	display: relative;
 }
-h3{
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 32px;
+h3 {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 32px;
 }
-h1{
-  text-align: center;
-  font-size: 40px;
+h1 {
+	text-align: center;
+	font-size: 40px;
 }
-h2{
+h2 {
 	text-align: center;
 	background-color: #d9d9d9;
 }
-h5{
+h5 {
 	color: #FFFFFF;
 	background-color: #d9d9d9;
 }
+/* BODY ALTALANOS ELEMEI */
 
-body{
-  background: repeat top/100% url("./img/background.png");
-  background-color: beige;
-  font-family:'Josefin Sans', sans serif;
-  width: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+body {
+	background: repeat top/100% url("./img/background.png");
+	background-color: beige;
+	font-family: 'Josefin Sans', sans serif;
+	width: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-right: 260px;
+	/* sidebar veszi el */
 }
-
-.kinalat{
-	font-family:'Josefin Sans', sans serif;
+.kinalat {
+	font-family: 'Josefin Sans', sans serif;
 	text-transform: uppercase;
 	font-size: 50px;
 }
-
-.submenu{
-	font-family:'Josefin Sans', sans serif;
+.submenu {
+	font-family: 'Josefin Sans', sans serif;
 	color: #ffffff;
 	font-size: 30px;
 	background-color: #000000;
 }
+/* MENUSOR ELEMEI */
 
-.menusor{
+.menusor {
 	position: sticky;
 	top: 0;
 	width: 100%;
@@ -54,40 +57,104 @@ body{
 	padding: 0;
 	overflow: hidden;
 	background-color: #333;
-
 }
-
 .sora {
 	float: left;
 	display: block;
 	text-align: center;
 	padding: 14px 16px;
 }
-.sora a{
+.sora a {
 	color: #FFFFFF;
 	text-decoration: none;
 }
-
 .sora:hover {
-  background-color: #111;
+	/*ha rahuzod az egeret:*/
+	background-color: #111;
 }
+/*az eppen aktiv oldal gombtulajdonsagai:*/
 
 .active {
 	padding: 14px 16px;
 	background-color: #111;
 }
+/* OLDALSAV ELEMEI */
 
-footer{
-  display: relative;
-  font-family:'Abril Fatface', sans serif;
-  color: #fff;
-  padding: 0;
-  background-color: #222;
-  justify-content: center;
-  width: 1000px;
+.sidenav {
+	height: 100%;
+	width: 260px;
+	z-index: 1;
+	/* maradjon a layerek tetejen */
+	background-color: #111;
+	overflow-x: hidden;
+	/* horizontalis gorgetes off */
+	padding-top: 20px;
+	position: fixed;
+	top: 0;
+	right: 0;
 }
+.sidenav a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+}
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+.main {
+	margin-left: 160px;
+	padding: 0px 10px;
+}
+/* reszponzivitas kisebb kepernyon */
 
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+/* ARCTICLE ELEMEI */
+
+.velemenyek {
+	margin: 0;
+	padding: 5px;
+	background-color: lightgray;
+}
+.velemenyek>h1, .kommentelo {
+	margin: 10px;
+	padding: 5px;
+}
+.kommentelo {
+	background: white;
+}
+.kommentelo>h2, p {
+	margin: 4px;
+	font-size: 90%;
+}
+/* FOOTER ELEMEI */
+
+footer {
+	display: relative;
+	font-family: 'Abril Fatface', sans serif;
+	color: #fff;
+	padding: 0;
+	background-color: #222;
+	justify-content: center;
+	width: 1000px;
+}
 footer::before {
+	content: '"';
+	font-size: 50px;
+	display: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+}
+=======
   content: '"';
   font-size: 50px;
   display: absolute;
@@ -100,5 +167,3 @@ footer::before {
   background: url("https://cdn.pixabay.com/photo/2017/08/16/05/13/lego-2646527_960_720.jpg"); /*ezeket majd ps kell megfelelő méretre igazízani*/
   height: 100px;
 }
-
-
