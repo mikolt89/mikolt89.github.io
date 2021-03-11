@@ -1,15 +1,17 @@
 /* HEADER ES CIMSOROK ELEMEI*/
 
 header {
-	background-color: rgb(245, 245, 220, 0.8);
+	top: 0;
 	font-family: 'Abril Fatface', sans serif;
+	color: #4d9efa;
 	display: block;
 	display: relative;
+	height: 310px;
 }
 h3 {
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 32px;
+	font-size: 22px;
 }
 h1 {
 	text-align: center;
@@ -23,6 +25,22 @@ h5 {
 	color: #FFFFFF;
 	background-color: #d9d9d9;
 }
+#lp{ /* landing page banner*/
+  background: url("./img/glx.png");
+  background-size: 100% auto;
+}
+#tl{ /* toplista banner*/
+  background: url("./img/toplist.jpg");
+  background-size: 100% auto;
+}
+#ot{ /* oldalterkep banner*/
+  background: url("./img/oldmap.png");
+  background-size: 100% auto;
+}
+#kap{ /* kapcsolat banner*/
+  background: url("./img/kapcs.jpg");
+  background-size: 100% auto;
+}
 /* BODY ALTALANOS ELEMEI */
 
 body {
@@ -30,7 +48,6 @@ body {
 	background-color: beige;
 	font-family: 'Josefin Sans', sans serif;
 	width: auto;
-	margin-top: 50px;
 	margin-bottom: 50px;
 	margin-right: 260px;
 	/* sidebar veszi el */
@@ -157,25 +174,25 @@ footer::before {
 
 /* REGISZTRÁCIÓ OLDAL ELEMEI */
 #reg{
-  background: url("https://cdn.pixabay.com/photo/2017/08/16/05/13/lego-2646527_960_720.jpg"); /*ezeket majd ps kell megfelelő méretre igazízani*/
-  height: 100px;
+  background: url("./img/reg.png"); /*ezeket majd ps kell megfelelő méretre igazízani*/
+  background-size: 100% auto;
 }
-/* nyomtatás -kérdés, hogy az adott html elejére tegyük e be vagy ide*/  
-@media print {  
-	p, li { 
+/* nyomtatás -kérdés, hogy az adott html elejére tegyük e be vagy ide*/
+@media print {
+	p, li {
 		font-size: 20pt;
 	}
 	label, option {
 		font-size: 30pt;
-	}      
-	video, audio, header,  footer, aside { display: none; } 
-	h1, h2, h3 { 
+	}
+	video, audio, header,  footer, aside { display: none; }
+	h1, h2, h3 {
 		page-break-after: avoid;
 		font-size: 24pt;
 	}
 	* {
-		color: #000;    
+		color: #000;
 		background-color: #fff;
 	}
-}  
-@page { margin: 1.5cm 1.5cm 0cm 4.5cm; } 
+}
+@page { margin: 1.5cm 1.5cm 0cm 4.5cm; }
