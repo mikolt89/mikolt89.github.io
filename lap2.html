@@ -25,9 +25,27 @@
   <br/>
   <br/>
   <br/>
-    <form method="POST">
-        <label>Név: <input type="text" name="name" placeholder="Név..." required/></label> <br/>
-        <label for="faj">Faj:</label>
+    <form method="POST" id="reg">
+        <fieldset>
+            <legend>Regisztráció:</legend>
+            <label>Mondd meg, mi a neved! <br/>
+            <input type="text" name="name" placeholder="Név..." required/></label> <br/>
+        <br/>
+        <label>Mit keresel?<br/></label>
+        <select name="keres" id="keres">
+            <option value="orok szerelem">Örök szerelem</option>
+            <option value="testi kapcsolat">Testi Kapcsolat</option>
+            <option value="szentgral">Szent Grál</option>
+        </select><br/>
+        <br/>
+        <label>Mi a kedvenc színed?<br/></label>   
+        <select name="szin" id="szin">
+            <option value="kek">Kék</option>
+            <option value="barna">Barna</option>
+            <option value="pink">Rózsaszín</option>
+        </select><br/>
+        <br/>
+        <label for="faj">Faj:<br/></label>
             <select name="faj" id="faj">
             <option value="aiwha">Aiwha</option>
             <option value="aleena">Aleena</option>
@@ -49,8 +67,9 @@
             <option value="toydari">Toydari</option>
             <option value="twilek">Twi&apos;lek</option>
             </select><br/>
-        <label for="lakhely">Bolygó:</label>
-            <select name="bolygo" id="bolygo">
+        <br/>
+        <label for="lakhely">Bolygó:<br/></label>
+            <select name="bolygo" id="lakhely">
             <option value="alderaan">Alderaan</option>
             <option value="ambria">Ambria</option>
             <option value="apatros">Apatros</option>
@@ -72,24 +91,29 @@
             <option value="tatooine">Tatooine</option>
             <option value="egyeb">text</option> <!--text area hogy illesztek be-->
             </select><br/>
+        <br/>
         <label for="identity">Identitás:</label><br>
-            <input type="radio" id="birodalmi" name="identity" value="birodalmi">
+            <input type="radio" id="identity" name="identity" value="birodalmi">
                 <label for="birodalmi">Birodalmi</label><br>
-            <input type="radio" id="koztarsasagi" name="identity" value="koztarsasagi">
+            <input type="radio" id="identity" name="identity" value="koztarsasagi" checked>
                 <label for="koztarsasagi">Köztársasági</label><br>
+        <br/>
         <label for="erdeklodes">Érdeklődés:</label><br>
-        <input type="checkbox" id="erdeklodes" name="aiwha" value="Aiwha">
-            <label for="aiwha"> Aiwha</label><br>
-            <input type="checkbox" id="aleena" name="aleena" value="Aleena">
-            <label for="aleena"> Aleena</label><br>
-            <input type="checkbox" id="anx" name="anx" value="Anx">
-            <label for="anx">Anx</label><br>
+            <input type="checkbox" id="erdeklodes" name="aiwha" value="Aiwha"checked>
+                <label for="aiwha"> Aiwha</label><br>
+            <input type="checkbox" id="erdeklodes" name="aleena" value="Aleena"checked>
+                <label for="aleena"> Aleena</label><br>
+            <input type="checkbox" id="erdeklodes" name="anx" value="Anx"checked>
+                <label for="anx">Anx</label><br>
+        <br/>
         <input type="submit" value="Regisztráció"/>
-
+        <input type="reset">
+    </fieldset>
     </form>
   <br/>
     <footer>
-        <p>Ni guroor <em>gar</em></p>
+        <p class="quotation"><sub>"</sub></p>
+        <p><s>Együtt uralhatjuk a gala</s>...vagyis együtt bármi sikerülhet, csak rajtatok <s>és az Erőn</s> múlik!</p>
       </footer>
 
 
