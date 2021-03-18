@@ -106,16 +106,29 @@ body {
 	font-family: 'Josefin Sans', sans serif;
 	margin: 0 260px 50px 0;
 	/* sidebar veszi el */
-
+	
 }
+
 .kinalat {
 	font-family: 'Josefin Sans', sans serif;
 	text-transform: uppercase;
 	font-size: 50px;
 }
 ul{
-	list-style-image: url('img\li_icon.gif');/*hmmm nem műxik*/
+	list-style-type: none;
+	margin-left: 0px;
 }
+ul li:before {
+	content: '';
+  	display: inline-block;
+  	height: 20px;
+  	width: 20px;
+    background-size: 20px;
+  	background-image: url("./img/li_icon.gif");
+  	background-repeat: no-repeat;
+	margin-right: 15px;
+  }
+
 .submenu {	
 	font-family: 'Josefin Sans', sans serif;
 	color: #ffffff;
@@ -129,6 +142,17 @@ figcaption {
 	padding: 2px;
 	text-align: center;
 	color: #BA8697;
+}
+#home{
+	width: 50px;
+	position: fixed;
+	bottom: 0;
+	right: 260px;
+	filter: grayscale(100%);
+}
+#home:hover{
+	width: 80px;
+	filter: grayscale(0%);
 }
 /* MENUSOR ELEMEI */
 
@@ -156,11 +180,12 @@ figcaption {
 
 .socmedia{
 	display: block;
+	float: inline-end;
 	width: 22px;
 	padding: 0px;
 	margin: 0px;
-	float: right; /*?? mennyé' jobbra*/
 }
+
 
 
 /*az eppen aktiv oldal gombtulajdonsagai:*/
@@ -225,6 +250,36 @@ figcaption {
 	margin-left: 160px;
 	padding: 0 10px;
 }
+fieldset {
+	width:50%;
+	height: 50%;
+	padding: 15px;
+	display: block;
+	margin: auto;
+	margin-top: 15px;
+    border-radius: 15px;
+	background-color: rgb(211, 211, 211, 0.9);
+}
+#ertekeles{
+	height: 30px;
+	width: 200px;
+    background:rgb(0, 0, 0); 
+    border:2px solid ;
+	color:#ddd;
+    cursor:pointer;   
+    border-radius: 3px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 10px;
+}
+.range_input{
+	width: 100%;
+}
+
+.range_input:hover {
+	opacity: 1;
+}
+
 
 /* reszponzivitas kisebb kepernyon */
 
@@ -305,10 +360,16 @@ table.Toplistatabla tfoot .links a{
 	padding: 2px 8px;
 	border-radius: 5px;
 }
+.forgat:hover{
+	-webkit-transform: rotate( -10deg );
+    -moz-transform: rotate( -10deg );
+    -o-transform: rotate( -10deg );
+    transform: rotate( -10deg );
+}
 
 /* REGISZTRÁCIÓ OLDAL ELEMEI */
 #reg fieldset {
-	width:80%;
+	width:50%;
 	margin: 2%;
 	display: block;
     margin-left: auto;
@@ -316,6 +377,7 @@ table.Toplistatabla tfoot .links a{
 	border-radius: 15px;
 	background-color: rgb(211, 211, 211, 0.9);
 }
+
 legend{
 	text-align: center;
 	font-size: 30px;
@@ -323,6 +385,7 @@ legend{
 	color:#fcba03;
 	font-weight: bold;
 	text-shadow: 2px 2px #333;
+	letter-spacing:5px
 }
 #reg{
 	margin-left: 20px;	
@@ -390,22 +453,33 @@ input[type=reset] {
 	background-color: #db1fa0;
 	color: #ddd;
 }
-.beagyazott{
+.alpont{
 	text-align: center;
 	line-height: 30px;
 	list-style-type: none;
 	margin-left: 0px;
 	text-decoration: none;
 }
-.beagyazott a{
+.alpont a{
 	color: #000;
 	text-decoration: none;
 }
-.beagyazott a:hover{
+.alpont a:hover{
 	padding: 10px;
 	background-color: #ddd;
 	color: #000;
 }
+#oldalterkep {
+	width:50%;
+	height: 50%;
+	padding: 15px;
+	display: block;
+	margin: auto;
+	margin-top: 15px;
+    border-radius: 15px;
+	background-image:image()
+}
+
 
 /* KAPCSOLAT OLDAL ELEMEI */
 
@@ -414,6 +488,7 @@ input[type=reset] {
 	line-height: 30px;
 	font-size: 25px;
 	text-align: center;
+	font-weight: bolder;
 }
 textarea{
 	display: block;
@@ -451,7 +526,10 @@ textarea{
 		background-color: #fff;
 	}
 }
-@page { margin: 1.5cm 1.5cm 0 4.5cm; }
+@page { 
+	size: A4 portrait;
+
+ }
 
 /* FOOTER ELEMEI */
 
