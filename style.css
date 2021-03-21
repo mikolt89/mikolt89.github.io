@@ -273,8 +273,10 @@ figcaption:hover{
 }
 .socmedia{
 	width: 22px;
-	height: 24px;
 	margin-left: 10px;
+}
+.socmedia:hover{
+	opacity: 0.5;
 }
 .sidenav a {
 	padding: 6px 8px 6px 16px;
@@ -318,11 +320,13 @@ fieldset {
 .range_input{
 	width: 100%;
 }
-
 .range_input:hover {
 	opacity: 1;
 }
-
+audio{
+	width: 215px;
+	margin: 15px;
+}
 
 /* reszponzivitas kisebb kepernyon */
 
