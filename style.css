@@ -1,6 +1,7 @@
 /* BETUTIPUSOK */
 
 /* latin-ext */
+
 @font-face {
 	font-family: 'Abril Fatface';
 	font-style: normal;
@@ -10,6 +11,7 @@
 	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
+
 @font-face {
 	font-family: 'Abril Fatface';
 	font-style: normal;
@@ -19,6 +21,7 @@
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* vietnami + ekezetes */
+
 @font-face {
 	font-family: 'Josefin Sans';
 	font-style: normal;
@@ -28,6 +31,7 @@
 	unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 /* latin-ext */
+
 @font-face {
 	font-family: 'Josefin Sans';
 	font-style: normal;
@@ -37,6 +41,7 @@
 	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
+
 @font-face {
 	font-family: 'Josefin Sans';
 	font-style: normal;
@@ -46,6 +51,7 @@
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* vietnamese */
+
 @font-face {
 	font-family: 'Merriweather';
 	font-style: normal;
@@ -55,6 +61,7 @@
 	unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 /* latin-ext */
+
 @font-face {
 	font-family: 'Merriweather';
 	font-style: normal;
@@ -64,6 +71,7 @@
 	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
+
 @font-face {
 	font-family: 'Merriweather';
 	font-style: normal;
@@ -72,8 +80,8 @@
 	src: url(./fonts/u-4n0qyriQwlOrhSvowK_l521wRZWMf6.woff2) format('woff2');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 /* SW galaktikus nyelv */
+
 @font-face {
 	font-family: 'Aurebesh';
 	font-style: normal;
@@ -81,15 +89,13 @@
 	font-display: swap;
 	src: url('./fonts/AureTechINV.woff2') format('woff2');
 }
-
-
-p:hover{
+p:hover {
 	font-family: 'Aurebesh', sans serif;
 }
 /* HEADER ES CIMSOROK ELEMEI*/
 
-img{
-	display:block;
+img {
+	display: block;
 	width: 100%;
 	height: auto;
 	overflow: hidden;
@@ -98,7 +104,7 @@ h1 {
 	text-align: center;
 	font-size: 40px;
 }
-h1:hover{
+h1:hover {
 	font-family: 'Aurebesh', sans serif;
 }
 h2 {
@@ -106,7 +112,7 @@ h2 {
 	background-color: #d9d9d9;
 	line-height: 120%;
 }
-h2:hover{
+h2:hover {
 	font-family: 'Aurebesh', sans serif;
 }
 h3 {
@@ -115,11 +121,14 @@ h3 {
 	font-size: 24px;
 }
 h4 {
+	margin-top: 0;
 	font-size: 22px;
 	background-color: #d9d9d9;
 	line-height: 120%;
+	text-align: center;
+	padding-bottom: 22px;
 }
-h4:hover{
+h4:hover {
 	font-family: 'Aurebesh', sans serif;
 }
 h5 {
@@ -133,7 +142,6 @@ body {
 	font-family: 'Josefin Sans', sans serif;
 	margin: 0 260px 50px 0;
 	/* sidebar veszi el */
-	
 }
 .kinalat {
 	background-color: #db1fa0;
@@ -143,40 +151,92 @@ body {
 	text-align: center;
 	line-height: 130%;
 	padding-top: 10px;
+	margin-top: 20px;
 	margin-left: 0;
 	margin-right: 0;
 	margin-bottom: 0;
 }
-.kinalat:hover{
+.headeralt {
+	background-color: #db1fa0;
+	font-family: 'Josefin Sans', sans serif;
+	text-transform: uppercase;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 130%;
+	padding-top: 10px;
+}
+#szegelyes {
+	border: 10px solid transparent;
+	padding: 0;
+	border-image: url("./img/border.jpg") 30 stretch;
+}
+.bevezeto {
+	color: #db1fa0;
+	background-color: #000000;
+	font-family: 'Josefin Sans', sans serif;
+	text-transform: uppercase;
+	font-size: 50px;
+	text-align: center;
+	line-height: 130%;
+	padding-top: 10px;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+.eloszo {
+	font-family: 'Josefin Sans', sans serif;
+	color: #000000;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 120%;
+	background-color: #d9d9d9;
+	text-align: center;
+	padding-bottom: 22px;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+mark {
+	background-color: #818181;
+	color: #ffffff;
+}
+.kinalat:hover {
 	font-family: 'Aurebesh', sans serif;
 	text-transform: uppercase;
 	font-size: 50px;
 }
-ul{
+ul {
 	margin-top: 0;
 	list-style-type: none;
-	margin-left: 0px;
+	margin-left: 0;
 }
 ul li:before {
 	content: '';
-  	display: inline-block;
-  	height: 20px;
-  	width: 20px;
-    background-size: 20px;
-  	background-image: url("./img/li_icon.gif");
-  	background-repeat: no-repeat;
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	background-size: 20px;
+	background-image: url("./img/li_icon.gif");
+	background-repeat: no-repeat;
 	margin-right: 15px;
-  }
-li:hover{
+}
+li:hover {
 	font-family: 'Aurebesh', sans serif;
 }
-.submenu {	
+.submenu {
 	font-family: 'Josefin Sans', sans serif;
 	color: #ffffff;
-	font-size: 30px;
-	background-color: rgb(0, 0, 0, 0.95);
+	font-size: 22px;
+	background-color: rgba(0, 0, 0, 0.95);
 	line-height: 120%;
-	
+}
+.center {
+	width: 100%;
+	height: auto;
+	display: block;
 }
 figcaption {
 	font-style: italic;
@@ -184,17 +244,17 @@ figcaption {
 	text-align: center;
 	color: #BA8697;
 }
-figcaption:hover{
+figcaption:hover {
 	font-family: 'Aurebesh', sans serif;
 }
-#home{
+#home {
 	width: 50px;
 	position: fixed;
 	bottom: 0;
 	right: 260px;
 	filter: grayscale(100%);
 }
-#home:hover{
+#home:hover {
 	width: 80px;
 	filter: grayscale(0%);
 }
@@ -221,28 +281,36 @@ figcaption:hover{
 	font-size: 24px;
 	background-color: #ddd;
 	color: black;
-}/*ha rahuzod az egeret:*/
+}
+/*ha rahuzod az egeret:*/
 
 /*az eppen aktiv oldal gombtulajdonsagai:*/
+
 .menusor a.active {
 	background-color: #db1fa0;
 	color: white;
 }
 /* eltunik kiskepernyon */
+
 .menusor .icon {
 	display: none;
 }
 /* MEDIA QUERY-k MENUSORHOZ*/
-@media screen and (max-width: 600px) { /* Ha kisebb, mint 600 px, eltunnek a linkek az elsot kiveve. Megjelenik a tobbi link gombja*/
-	.menusor a:not(:first-child) {display: none;}
+
+@media screen and (max-width: 600px) {
+	/* Ha kisebb, mint 600 px, eltunnek a linkek az elsot kiveve. Megjelenik a tobbi link gombja*/
+	.menusor a:not(:first-child) {
+		display: none;
+	}
 	.menusor a.icon {
 		float: right;
 		display: block;
 	}
 }
-
 @media screen and (max-width: 600px) {
-	.menusor.responsive {position: relative;}
+	.menusor.responsive {
+		position: relative;
+	}
 	.menusor.responsive a.icon {
 		position: absolute;
 		right: 0;
@@ -271,11 +339,11 @@ figcaption:hover{
 	top: 0;
 	right: 0;
 }
-.socmedia{
+.socmedia {
 	width: 22px;
 	margin-left: 10px;
 }
-.socmedia:hover{
+.socmedia:hover {
 	opacity: 0.5;
 }
 .sidenav a {
@@ -295,39 +363,37 @@ figcaption:hover{
 	padding: 0 10px;
 }
 fieldset {
-	width:50%;
+	width: 50%;
 	height: 50%;
 	padding: 15px;
 	display: block;
 	margin: auto;
 	margin-top: 15px;
-    border-radius: 15px;
-	background-color: rgb(211, 211, 211, 0.9);
+	border-radius: 15px;
+	background-color: rgba(211, 211, 211, 0.9);
 }
-
-#ertekeles{
+#ertekeles {
 	height: 30px;
 	width: 200px;
-    background:rgb(0, 0, 0); 
-    border:2px solid ;
-	color:#ddd;
-    cursor:pointer;   
-    border-radius: 3px;
+	background: rgb(0, 0, 0);
+	border: 2px solid;
+	color: #ddd;
+	cursor: pointer;
+	border-radius: 3px;
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 10px;
 }
-.range_input{
+.range_input {
 	width: 100%;
 }
 .range_input:hover {
 	opacity: 1;
 }
-audio{
+audio {
 	width: 215px;
 	margin: 15px;
 }
-
 /* reszponzivitas kisebb kepernyon */
 
 @media screen and (max-height: 450px) {
@@ -345,14 +411,17 @@ audio{
 	font-weight: bold;
 	margin: 0;
 	padding: 5px;
-	background-color: rgb(211, 211, 211, 0.9);
+	background-color: rgba(211, 211, 211, 0.9);
 }
 .velemenyek>h1, .kommentelo {
 	margin: 10px;
 	padding: 5px;
 }
 .kommentelo {
-	background: white;
+	text-align: center;
+	background-color: rgba(145, 158, 173, 0.19);
+	margin-left: 0;
+	margin-right: 0;
 }
 .kommentelo>h2, p {
 	margin: 4px;
@@ -368,13 +437,14 @@ table.Toplistatabla {
 	text-align: center;
 	border-collapse: collapse;
 }
-table.Toplistatabla a{
+table.Toplistatabla a {
 	text-decoration: none;
 	color: #FFFFFF;
 }
 table.Toplistatabla td, table.Toplistatabla th {
 	border: 1px solid #555555;
 	padding: 4px 4px;
+	vertical-align: top;
 }
 table.Toplistatabla tbody td {
 	border: 4px solid #AAAAAA;
@@ -396,64 +466,61 @@ table.Toplistatabla thead th {
 table.Toplistatabla thead th:first-child {
 	border-left: none;
 }
-
 table.Toplistatabla tfoot .links {
 	text-align: right;
 }
-table.Toplistatabla tfoot .links a{
+table.Toplistatabla tfoot .links a {
 	display: inline-block;
 	background: #FFFFFF;
 	color: #BA8697;
 	padding: 2px 8px;
 	border-radius: 5px;
 }
-.forgat:hover{
-	-webkit-transform: rotate( -10deg );
-    -moz-transform: rotate( -10deg );
-    -o-transform: rotate( -10deg );
-    transform: rotate( -10deg );
+.forgat:hover {
+	-webkit-transform: rotate( -10deg);
+	-moz-transform: rotate( -10deg);
+	-o-transform: rotate( -10deg);
+	transform: rotate( -10deg);
 }
-
 /* REGISZTRÁCIÓ OLDAL ELEMEI */
-#naplemente{
+
+#naplemente {
 	padding-bottom: 20px;
 	z-index: -1;
 }
-
 #reg fieldset {
-	width:50%;
+	width: 50%;
 	margin: 2%;
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 	border-radius: 15px;
-	background-color: rgb(211, 211, 211, 0.9);
+	background-color: rgba(211, 211, 211, 0.9);
 	font-weight: bolder;
 }
-
-legend{
+legend {
 	text-align: center;
 	font-size: 30px;
 	text-transform: uppercase;
-	color:#fcba03;
+	color: #fcba03;
 	font-weight: bold;
 	text-shadow: 2px 2px #333;
-	letter-spacing:5px
+	letter-spacing: 5px
 }
-#reg{
-	margin-left: 20px;	
+#reg {
+	margin-left: 20px;
 }
-*, 	*::before, 	*::after {
+*, *::before, *::after {
 	box-sizing: border-box;
 }
-select{
+select {
 	font-family: 'Josefin Sans', sans serif;
 	width: 140px;
 	box-align: right;
 	margin-left: 100px;
-	padding:5px; 
-    border:2px solid #ccc; 
-    border-radius: 5px;
+	padding: 5px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
 	font-weight: bolder;
 	appearance: none;
 }
@@ -464,45 +531,44 @@ input[type=text] {
 	margin-left: 100px;
 	width: 130px;
 	height: 25px;
-    border:2px solid #ccc; 
-    border-radius: 5px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
 	margin-right: 5px;
 	transition: width 0.4s ease-in-out;
 }
 input[type=text]:focus {
 	width: 75%;
-  }
+}
 input[type=submit] {
 	height: 30px;
-    background:rgb(0, 0, 0); 
-    border:3px solid #db1fa0;
-	color:#ddd;
-    cursor:pointer;   
-    border-radius: 5px;
+	background: rgb(0, 0, 0);
+	border: 3px solid #db1fa0;
+	color: #ddd;
+	cursor: pointer;
+	border-radius: 5px;
 	text-transform: uppercase;
 	font-size: 15px;
 }
 input[type=reset] {
-    height: 30px;
-    background:rgb(0, 0, 0); 
-    border:3px solid #db1fa0;
-	color:#ddd;
-    cursor:pointer;
-    border-radius: 5px;
+	height: 30px;
+	background: rgb(0, 0, 0);
+	border: 3px solid #db1fa0;
+	color: #ddd;
+	cursor: pointer;
+	border-radius: 5px;
 	text-transform: uppercase;
 	font-size: 15px;
 }
-
 /* OLDALTÉRKÉP OLDAL ELEMEI */
-.oldalterkep{
+
+.oldalterkep {
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: bold;
 	line-height: 30px;
-	list-style-type: none;	
+	list-style-type: none;
 }
-
-.oldalterkep a{
+.oldalterkep a {
 	font-size: 23px;
 	text-decoration: none;
 	color: #000;
@@ -512,63 +578,95 @@ input[type=reset] {
 	background-color: #db1fa0;
 	color: #ddd;
 }
-.alpont{
+.alpont {
 	font-weight: bold;
 	text-align: center;
 	line-height: 30px;
 	list-style-type: none;
-	margin-left: 0px;
+	margin-left: 0;
 	text-decoration: none;
 }
-.alpont a{
+.alpont a {
 	color: #000;
 	text-decoration: none;
 }
-.alpont a:hover{
+.alpont a:hover {
 	padding: 10px;
 	background-color: #ddd;
 	color: #000;
 }
 #oldalterkep {
-	width:50%;
+	width: 50%;
 	height: 50%;
 	padding: 15px;
 	display: block;
 	margin: auto;
 	margin-top: 15px;
-    border-radius: 15px;
-	background-image:image()
+	border-radius: 15px;
 }
-
-
 /* KAPCSOLAT OLDAL ELEMEI */
 
-#kapcsolat, #impresszum{
-	margin-left: 10px;
+#impresszum {
+	margin-left: 0;
 	line-height: 30px;
 	font-size: 25px;
 	text-align: center;
 	font-weight: bolder;
+	background-color: rgba(29, 98, 133, 0.85);
+	padding-bottom: 30px;
+	color:white;
 }
-textarea{
+.koszonet {
+	font-size: 38px;
+	font-family: 'Josefin Sans', sans serif;
+	font-weight: bold;
+	color: #FF8282;
+	text-align: center;
+}
+* {
+	box-sizing: border-box;
+}
+.box1 {
+	float: left;
+	width: 10%;
+	padding: 10px;
+	margin: 0 auto;
+}
+.box2 {
+	float: left;
+	width: 10%;
+	padding: 10px;
+	margin: 0 auto;
+}
+.box3 {
+	float: left;
+	width: 80%;
+	padding: 10px;
+}
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+textarea {
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 5px;
-    font-size: 16px;
-    background-color: #FFFFFF;
-    color: #000000;
-    border-style: solid;
-    border-radius: 7px;
-    box-shadow: 0px 0px 10px #fcba03;
+	font-size: 16px;
+	background-color: #FFFFFF;
+	color: #000000;
+	border-style: solid;
+	border-radius: 7px;
+	box-shadow: 0 0 10px #fcba03;
 }
-#kuldes{
+#kuldes {
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
-
 /* nyomtatás -kérdés, hogy az adott html elejére tegyük e be vagy ide*/
+
 @media print {
 	p, li {
 		font-size: 20pt;
@@ -576,7 +674,9 @@ textarea{
 	label, option {
 		font-size: 30pt;
 	}
-	video, audio, header,  footer, aside { display: none; }
+	video, audio, header, footer, aside {
+		display: none;
+	}
 	h1, h2, h3 {
 		page-break-after: avoid;
 		font-size: 24pt;
@@ -586,11 +686,9 @@ textarea{
 		background-color: #fff;
 	}
 }
-@page { 
+@page {
 	size: A4 portrait;
-
- }
-
+}
 /* FOOTER ELEMEI */
 
 footer {
@@ -598,19 +696,18 @@ footer {
 	font-size: 150%;
 	color: #fff;
 	padding: 0;
-	background-color: rgb(34, 34, 34, 0.9);
+	background-color: rgba(34, 34, 34, 0.9);
 	width: 100%;
 	height: auto;
 	bottom: 0;
 	margin-bottom: 0;
 }
-footer:hover{
+footer:hover {
 	font-family: 'Abril Fatface', sans serif;
 }
-.quotation{
+.quotation {
 	font-family: 'Aurebesh', sans serif;
-	margin-left: 0px;
+	margin-left: 0;
 	font-size: 50pt;
 	line-height: 20%;
-
 }

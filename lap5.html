@@ -1,86 +1,102 @@
 <!DOCTYPE html>
-<html lang="hu" >
+<html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="./img/Darth-Vader.ico">
-  <title>Kapcsolat</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <link href="./img/Darth-Vader.ico" rel="icon">
+    <title>Kapcsolat</title>
+    <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-<div id="banner-content">
-    <img src="./img/kapcs.jpg" alt="Kapcsolat">
+<div id="banner-content"><img alt="Kapcsolat" src="./img/kapcs.jpg"></div>
+<div class="menusor" id="lpMenusor">
+    <a href="./index.html">Kezdőlap</a> <a href="./lap2.html">Regisztráció</a> <a href="./lap4.html">Toplista</a> <a href="./lap3.html">Oldaltérkép</a> <a class="active" href="./lap5.html">Kapcsolat</a>
 </div>
-  <div class="menusor" id="lpMenusor">
-    <a href="./index.html">Kezdőlap</a>
-    <a href="./lap2.html">Regisztráció</a>
-    <a href="./lap4.html">Toplista</a>
-    <a href="./lap3.html">Oldaltérkép</a>
-    <a class="active" href="./lap5.html">Kapcsolat</a>    
-  </div>
 <aside class="sidenav">
-    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img src="img\fb.png"class="socmedia" alt="facebook-icon"></a>
-	<a href="https://www.instagram.com/starwars/" target="_blank"><img src="img\insta.png"class="socmedia" alt="instagram-icon"></a>
-	<a href="https://twitter.com/starwars" target="_blank"><img src="img\tw.png"class="socmedia"alt="twitter-icon"></a>
-    <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img src="img\tiktok.png"class="socmedia" alt="tiktok-icon"></a>
-    <a href="#kapcsolat">Kapcsolat</a></br> <a href="#visszajelzes">Írj nekünk</a></br> <a href="#impresszum">Impresszum</a>
-    <iframe width="260" height="131" src="https://www.youtube.com/embed/0X9NFknjTRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" width="260" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-    <form action=""  method="post">
+    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a> <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a> <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a> <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a> <a href="#kapcsolat">Kapcsolat</a><br>
+    <a href="#visszajelzes">Írj nekünk</a><br>
+    <a href="#impresszum">Impresszum</a> <iframe allowfullscreen frameborder="0" height="131" src="https://www.youtube.com/embed/0X9NFknjTRE" title="YouTube video player" width="260"></iframe> <iframe allowfullscreen="true" frameborder="0" height="70" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" width="260"></iframe>
+    <form action="" method="post">
         <fieldset>
-            </legend>Értékelje oldalunkat! <br>
-                <input class="range_input" type="range" value="0" min="0" max="4" step="1" list="number" />
-                    <datalist class="range_list" id="number">
-                        <option class="range_opt opt0">1</option> 
-                        <option class="range_opt">2</option> 
-                        <option class="range_opt">3</option> 
-                        <option class="range_opt">4</option> 
-                        <option class="range_opt">5</option> 
-                </datalist>
-        </br>
-        </br>
-        <input type="submit" name="kuld" id="ertekeles">
+            <p class="alpont">Értékelje oldalunkat!</p><br>
+            <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
+            <option class="range_opt opt0">
+                1
+            </option>
+            <option class="range_opt">
+                2
+            </option>
+            <option class="range_opt">
+                3
+            </option>
+            <option class="range_opt">
+                4
+            </option>
+            <option class="range_opt">
+                5
+            </option>
+        </datalist><br>
+            <br>
+            <input id="ertekeles" name="kuld" type="submit">
         </fieldset>
-      </form>
-      <audio controls autoplay >			
-        <source src="audio\lelegzet.mp3" type="audio/mpeg">
-      <p>Böngészője nem támogatja az audio elemet.</p>
-      </audio>		 
+    </form><audio autoplay="" controls=""><source src="audio/lelegzet.mp3" type="audio/mpeg">
+    <p>Böngészője nem támogatja az audio elemet.</p></audio> <audio autoplay="" controls="" loop=""><source src="./audio/kotorjavyarscantina.mp3" type="audio/mpeg">
+    <p>Böngészője nem támogatja az audio elemet.</p></audio>
 </aside>
-  <br/>
-  <br/>
-  <br/>
-<div id="kapcsolat">
-    <h2>Kapcsolat</h2>
-    <p>Tulajdonos: <strong>Sith nagyúr</strong> </p>
-    <p>Bolygó: <strong> Halálcsillag</strong> </p>
+<header class="headeralt" id="kapcsolat">
+    <p>Vedd fel velünk a kapcsolatot</p><img alt="Halálcsillag" id="szegelyes" src="./img/ds.gif">
+</header>
+<main class="eloszo">
+    <br>
+    <p class="active">Az oldal tulajdonosa: Sith nagyúr</p>
+    <p>Űrpostacímünk: Endor-rendszer, Halálcsillag (éppen aktuális) 1.</p>
+</main>
+<form id="visszajelzes" method="post" name="visszajelzes">
+    <label></label>
+    <p class="eloszo"><label>Galaxisunk több milliárd magányos lélek otthona, mi pedig galaktikus standard nap mint nap azon fáradozunk, hogy a magányos ingoványból kiemeljük, megtisztítsuk és összehozzuk a megfáradt lelkeket. Mind emberek (vagy mások) vagyunk, emiatt pedig könnyen előfordulhat, hogy hibákat vétünk. Amennyiben oldalunk működésében hibát észlelsz vagy csupán köszönetet szeretnél mondani kitartó munkánkért, ne habozz tovább:</label></p><label><br>
+    <textarea cols="50" maxlength="500" name="feedback" placeholder="Várjuk visszajelzésed (max. 500 karakter)!" rows="5"></textarea><br>
+    <br>
+    <input id="kuldes" type="submit"></label>
+</form><br>
+<br>
+<br>
+<div class="clearfix">
+    <div class="box1"><img alt="Galaktikus Birodalom jelképe" src="./img/dl-a.png"></div>
+    <div class="box3">
+        <p class="koszonet"><mark>Köszönjük a bizalmat!</mark></p>
+    </div>
+    <div class="box2"><img alt="Lázadók jelképe" src="./img/l-a.png"></div>
 </div>
-    <br/>
-    <br/>
-<form method="POST" id="visszajelzes">
-    <label><h2>Írj nekünk: </h2><br/>
-        <textarea name="feedback" rows="5" cols="50" maxlength="500" 
-        placeholder="Várjuk visszajelzésed (max. 500 karakter)!"></textarea> 
-        <br/>
-        <br/>
-        <input type="submit" id="kuldes"/>
-    </label>
-</form><br/>
-    <br/>
-    <br/>
 <div id="impresszum">
     <h2>Impresszum:</h2>
     <p><u>Az oldal készítői:</u></p>
-    <p>Tarjányi Csongor </p>
-     <p> Csaba-Tóth Zsófia</p>
-</div><br/>
-    <br/>
-    <div id="home">
-		<a href="#banner-content"><img src="img\li_icon.gif"class="home" alt="Lap tetejére" title="Lap tetejére"></a>
-	</div>
-	<footer>
-        <p class="quotation"><sub>"</sub></p>
-		<q>Az Erő bennünk áramlik, érezni kell. Higgyél benne, akkor menni fog. Az Erő által sok mindent láthatsz meg, a jövőt, a múltat… rég eltűnt barátokat. Uralkodni kell magadon, tedd, vagy ne tedd, érezd az Erőt. Megismerésre, védekezésre használd, sose támadásra. Tudni fogod, csak légy nyugodt, oszlasd el a kételyeidet. </q>
-        <h3>Birodalmi Társkereső © 2021 Csaba-Tóth Zsófia és Tarjányi Csongor</h3>
-    </footer>
+    <p class="impresszumkontent">Tarjányi Csongor</p>
+    <p>Csaba-Tóth Zsófia</p><br>
+    <p>Sidebar videóanyag: www.youtube.com</p><br>
+    <p>Bemutatkozó videó: Tarjányi Csongor</p><br>
+    <p>Felhasznált social media hivatkozások:<br>
+        https://www.facebook.com/Star-Wars-Lovers-1810298222633396/<br>
+        https://www.instagram.com/starwars/<br>
+        https://twitter.com/starwars<br>
+        https://www.tiktok.com/@official_starwars?</p><br>
+    <p>Halálcsillag gif:<br>
+        Isaac + Benjamin Botkin @ Designboom</p><br>
+    <p>Bannerek: Hivatalos Star Wars concept rajzok, kiadványok</p><br>
+    <p>Toplista képek: Wookiepedia, Pixabay, Google CC0</p><br>
+    <p>Toplista keretek: Tarjányi Csongor, Csaba-Tóth Zsófia</p><br>
+    <p>Hanfelvételek: Csaba-Tóth Zsófia</p><br>
+    <p>Social media ikonok: Csaba-Tóth Zsófia</p><br>
+    <p>Idézetek: Star Wars filmek, Tarjányi Csongor</p>
+    <p>Zenék: Hivatalos Star Wars források (KOTOR, KOTOR2, CCO MV-k</p><br>
+    <p>Az oldal tanulmányi projektmunka keretein belül készült, nem célja a redisztribúció és bármilyen tartalom jogtalan felhasználása.</p><br>
+    <p>2021 - Minden jog fenntartva.</p>
+</div><br>
+<br>
+<div id="home">
+    <a href="#banner-content"><img alt="Lap tetejére" class="home" src="img/li_icon.gif" title="Lap tetejére"></a>
+</div>
+<footer>
+    <p class="quotation"><sub>"</sub></p><q>Az Erő bennünk áramlik, érezni kell. Higgyél benne, akkor menni fog. Az Erő által sok mindent láthatsz meg, a jövőt, a múltat… rég eltűnt barátokat. Uralkodni kell magadon, tedd, vagy ne tedd, érezd az Erőt. Megismerésre, védekezésre használd, sose támadásra. Tudni fogod, csak légy nyugodt, oszlasd el a kételyeidet.</q>
+    <h3>Csillagközi Társkereső © 2021 Csaba-Tóth Zsófia és Tarjányi Csongor</h3>
+</footer>
 </body>
 </html>
