@@ -1,0 +1,68 @@
+/* MEDIA QUERY-k MENUSORHOZ*/
+
+@media screen and (max-width: 600px) {
+	/* Ha kisebb, mint 600 px, eltunnek a linkek az elsot kiveve. Megjelenik a tobbi link gombja*/
+	.menusor a:not(:first-child) {
+		display: none;
+	}
+	.menusor a.icon {
+		float: right;
+		display: block;
+	}
+}
+@media screen and (max-width: 600px) {
+	.menusor.responsive {
+		position: relative;
+	}
+	.menusor.responsive a.icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.menusor.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+}
+
+/* reszponzivitas kisebb kepernyon */
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+
+/*nyomtatás*/
+
+@media print {
+	p, li {
+		font-size: 20pt;
+	}
+	label, option {
+		font-size: 30pt;
+	}
+	video, audio, header, footer, aside {
+		display: none;
+	}
+    #home{
+        display: none;
+    }
+    #bemutatkozo{
+        display: none;
+    }
+	h1, h2, h3 {
+		page-break-after: avoid;
+		font-size: 24pt;
+	}
+	* {		
+		background-color: #fff;
+	}
+}
+@page {
+	size: A4 portrait;
+}
