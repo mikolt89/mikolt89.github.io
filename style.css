@@ -119,7 +119,7 @@ ul {
 	list-style-type: none;
 	margin-left: 0;
 }
-ul li:before {
+.submenu_li:before {
 	content: '';
 	display: inline-block;
 	height: 20px;
@@ -325,6 +325,9 @@ table.Toplistatabla {
 table.Toplistatabla a {
 	text-decoration: none;
 	color: #FFFFFF;
+}
+table.Toplistatabla a:visited {
+	color:#fcba03;
 }
 table.Toplistatabla td, table.Toplistatabla th {
 	border: 1px solid #555555;
