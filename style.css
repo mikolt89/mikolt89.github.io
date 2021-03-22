@@ -222,6 +222,7 @@ ul li:before {
 	background-image: url("./img/li_icon.gif");
 	background-repeat: no-repeat;
 	margin-right: 15px;
+	margin-top: 15px;
 }
 li:hover {
 	font-family: 'Aurebesh', sans serif;
@@ -322,8 +323,6 @@ figcaption:hover {
 		text-align: left;
 	}
 }
-/* LIKE FUNKCIO */
-
 /* OLDALSAV ELEMEI */
 
 .sidenav {
@@ -394,6 +393,20 @@ audio {
 	width: 215px;
 	margin: 15px;
 }
+
+.fb{
+	height: 70px;
+	width: 260px;
+	border: none;
+	overflow:hidden;
+}
+.yt{
+	height: 131px;
+	width: 260px;
+	border: none;
+	overflow:hidden;
+}
+
 /* reszponzivitas kisebb kepernyon */
 
 @media screen and (max-height: 450px) {
@@ -429,6 +442,9 @@ audio {
 }
 /* TOPLISTA/TÁBLÁZAT ELEMEI */
 
+.valaszto{
+	background-color:#FF8282;	
+}
 table.Toplistatabla {
 	border: 4px solid #BA8697;
 	background-color: #555555;
@@ -477,17 +493,10 @@ table.Toplistatabla tfoot .links a {
 	border-radius: 5px;
 }
 .forgat:hover {
-	-webkit-transform: rotate( -10deg);
-	-moz-transform: rotate( -10deg);
-	-o-transform: rotate( -10deg);
 	transform: rotate( -10deg);
 }
 /* REGISZTRÁCIÓ OLDAL ELEMEI */
 
-#naplemente {
-	padding-bottom: 20px;
-	z-index: -1;
-}
 #reg fieldset {
 	width: 50%;
 	margin: 2%;
@@ -516,7 +525,6 @@ legend {
 select {
 	font-family: 'Josefin Sans', sans serif;
 	width: 140px;
-	box-align: right;
 	margin-left: 100px;
 	padding: 5px;
 	border: 2px solid #ccc;

@@ -9,12 +9,16 @@
 <body>
 <div id="banner-content"><img alt="Regisztráció" src="./img/reg.png"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.html">Kezdőlap</a> <a class="active" href="./lap2.html">Regisztráció</a> <a href="./lap4.html">Toplista</a> <a href="./lap3.html">Oldaltérkép</a> <a href="./lap5.html">Kapcsolat</a>
+    <a href="./index.html">Kezdőlap</a> <a class="active" href="./regisztracio.html">Regisztráció</a> <a href="./toplista.html">Toplista</a> <a href="./oldalterkep.html">Oldaltérkép</a> <a href="./kapcsolat.html">Kapcsolat</a>
 </div>
 <aside class="sidenav">
-    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a> <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a> <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a> <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a>
-    <p></p><iframe allowfullscreen frameborder="0" height="131" src="https://www.youtube.com/embed/D-Sv6fu-udU" title="YouTube video player" width="260"></iframe> <iframe allowfullscreen="true" frameborder="0" height="70" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:hidden" width="260"></iframe>
-    <form action="" method="post">
+    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
+    <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a>
+    <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a>
+    <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a>
+    <iframe class="yt" src="https://www.youtube.com/embed/D-Sv6fu-udU" title="YouTube video player"></iframe>
+    <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
+    <form method="post">
         <fieldset>
             <p class="alpont">Értékelje oldalunkat!</p><br>
             <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
@@ -43,7 +47,7 @@
 </aside><br>
 <br>
 <br>
-<form action="" id="reg" method="post" name="reg">
+<form id="reg" method="post" name="reg">
     <fieldset>
         <legend>Regisztráció:</legend> <label>Mondd meg, mi a neved!<br>
         <input name="name" placeholder="Név..." type="text"></label><br>
@@ -192,38 +196,38 @@
         </option>
     </select><br>
         <br>
-        <label for="identity">Identitás:</label><br>
-        <input id="identity" name="identity" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br>
-        <input checked id="identity" name="identity" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br>
+        <label>Identitás:</label><br>
+        <input id="birodalmi" name="identity" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br>
+        <input checked id="koztarsasagi" name="identity" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br>
         <br>
         <br>
-        <label for="erdeklodes">Érdeklődés:</label><br>
+        <label>Érdeklődés:</label><br>
         <br>
-        <input checked id="erdeklodes" name="aiwha" type="checkbox" value="Aiwha"> <label for="aiwha">Aiwha</label><br>
-        <input checked id="erdeklodes" name="aleena" type="checkbox" value="Aleena"> <label for="aleena">Aleena</label><br>
-        <input id="erdeklodes" name="anx" type="checkbox"> <label for="anx">Anx</label><br>
-        <input id="erdeklodes" name="balosar" type="checkbox"> <label for="balosar">Balosar</label><br>
-        <input id="erdeklodes" name="besalisk" type="checkbox"> <label for="besalisk">Besalisk</label><br>
-        <input checked id="erdeklodes" name="cereai" type="checkbox" value="Cereai"> <label for="cereai">Cereai</label><br>
-        <input id="erdeklodes" name="chagrian" type="checkbox"> <label for="chagrian">Chagrian</label><br>
-        <input id="erdeklodes" name="devlikk" type="checkbox"> <label for="devlikk">Devlikk</label><br>
-        <input id="erdeklodes" name="dressellian" type="checkbox"> <label for="dressellian">Dressellian</label><br>
-        <input id="erdeklodes" name="dug" type="checkbox"> <label for="dug">Dug</label><br>
-        <input id="erdeklodes" name="gran" type="checkbox"> <label for="gran">Gran</label><br>
-        <input id="erdeklodes" name="iktotchi" type="checkbox"> <label for="iktotchi">Iktotchi</label><br>
-        <input id="erdeklodes" name="klatooinian" type="checkbox"> <label for="klatooinian">Klatooinian</label><br>
-        <input checked id="erdeklodes" name="muun" type="checkbox" value="Muun"> <label for="muun">Muun</label><br>
-        <input id="erdeklodes" name="nautolani" type="checkbox"> <label for="nautolani">Nautolani</label><br>
-        <input id="erdeklodes" name="seloniai" type="checkbox"> <label for="seloniai">Seloniai</label><br>
-        <input id="erdeklodes" name="togruta" type="checkbox"> <label for="togruta">Togruta</label><br>
-        <input id="erdeklodes" name="toydari" type="checkbox"> <label for="toydari">Toydari</label><br>
-        <input checked id="erdeklodes" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br>
+        <input checked id="aiwha" name="aiwha" type="checkbox" value="Aiwha"> <label for="aiwha">Aiwha</label><br>
+        <input checked id="aleena" name="aleena" type="checkbox" value="Aleena"> <label for="aleena">Aleena</label><br>
+        <input id="anx" name="anx" type="checkbox"> <label for="anx">Anx</label><br>
+        <input id="balosar" name="balosar" type="checkbox"> <label for="balosar">Balosar</label><br>
+        <input id="besalisk" name="besalisk" type="checkbox"> <label for="besalisk">Besalisk</label><br>
+        <input checked id="cereai" name="cereai" type="checkbox" value="Cereai"> <label for="cereai">Cereai</label><br>
+        <input id="chagrian" name="chagrian" type="checkbox"> <label for="chagrian">Chagrian</label><br>
+        <input id="devlikk" name="devlikk" type="checkbox"> <label for="devlikk">Devlikk</label><br>
+        <input id="dressellian" name="dressellian" type="checkbox"> <label for="dressellian">Dressellian</label><br>
+        <input id="dug" name="dug" type="checkbox"> <label for="dug">Dug</label><br>
+        <input id="gran" name="gran" type="checkbox"> <label for="gran">Gran</label><br>
+        <input id="iktotchi" name="iktotchi" type="checkbox"> <label for="iktotchi">Iktotchi</label><br>
+        <input id="klatooinian" name="klatooinian" type="checkbox"> <label for="klatooinian">Klatooinian</label><br>
+        <input checked id="muun" name="muun" type="checkbox" value="Muun"> <label for="muun">Muun</label><br>
+        <input id="nautolani" name="nautolani" type="checkbox"> <label for="nautolani">Nautolani</label><br>
+        <input id="seloniai" name="seloniai" type="checkbox"> <label for="seloniai">Seloniai</label><br>
+        <input id="togruta" name="togruta" type="checkbox"> <label for="togruta">Togruta</label><br>
+        <input id="toydari" name="toydari" type="checkbox"> <label for="toydari">Toydari</label><br>
+        <input checked id="twilek" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br>
         <br>
         <label for="hozzajarulas"></label><br>
         <input id="hozzajarulas" name="hozzajarulas" type="checkbox"> <label for="hozzajarulas">Elolvastam az <a href="files/Adatv%C3%A9delmi%20ir%C3%A1nyelvek.pdf" target="_blank">adatvédelmi irányelveket</a>, hozzájárulok adataim tárolásához.</label><br>
         <br>
         <label for="hirlevel"></label><br>
-        <input id="hirlevel" name="hirlevel" type="checkbox"> <label for="hozhirlevelzajarulas">Kérem a személyre szabott tippeket a randizáshoz, és a nekem ajánlott entitásokat!</label><br>
+        <input id="hirlevel" name="hirlevel" type="checkbox"> <label for="hirlevel">Kérem a személyre szabott tippeket a randizáshoz, és a nekem ajánlott entitásokat!</label><br>
         <br>
         <input type="submit" value="Regisztráció"> <input type="reset">
     </fieldset>
