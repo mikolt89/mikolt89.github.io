@@ -118,6 +118,7 @@ ul {
 	margin-top: 0;
 	list-style-type: none;
 	margin-left: 0;
+	padding-left: 0;
 }
 .submenu_li:before {
 	content: '';
@@ -139,6 +140,7 @@ li:hover {
 	font-size: 22px;
 	background-color: rgba(0, 0, 0, 0.95);
 	line-height: 120%;
+	padding-left: 22px;
 }
 .center {
 	width: 100%;
