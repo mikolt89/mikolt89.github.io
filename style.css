@@ -411,7 +411,7 @@ select {
 option {
 	font-weight: bolder;
 }
-input[type=text] {
+input[type=text], input[type=password] {
 	margin-left: 100px;
 	width: 130px;
 	height: 25px;
@@ -423,6 +423,7 @@ input[type=text] {
 input[type=text]:focus {
 	width: 75%;
 }
+
 input[type=submit] {
 	height: 30px;
 	background: rgb(0, 0, 0);

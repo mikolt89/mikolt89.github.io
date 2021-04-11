@@ -50,35 +50,45 @@
 </aside><br/>
 <br/>
 <br/>
-<form id="reg" method="post" name="reg">
+<form id="reg" method="POST" name="reg">
     <fieldset>
         <legend>Regisztráció:</legend>
-        <label>Mondd meg, mi a neved!<br/>
-        <input name="name" placeholder="Név..." type="text"></label>
+        <label for="name">Mondd meg, mi a neved!<br/>
+            <input name="name" id="name" placeholder="Név..." type="text" value="<?php echo $name;?>"></label>
         <br/>
         <br/>
-        <label>Írd meg a galaktikus e-mail címed!<br/>
-            <input name="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text"></label>
-            <br/>
+        <label for="nickname">Válassz egy felhasználónevet!<br/>
+            <input name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo $nickname;?>"></label>
         <br/>
-        <label>Mit keresel?<br/></label> <select id="keres" name="keres">
-        <option value="orok szerelem">
-            Örök szerelem
-        </option>
-        <option value="testi kapcsolat">
-            Testi Kapcsolat
-        </option>
-        <option value="szentgral">
-            Szent Grál
-        </option>
-    </select><br/>
-    <br/>
-        <label>Mi a kedvenc színed?<br/></label>
+        <br/>        
+        <label for="email">Írd meg a galaktikus e-mail címed!<br/>
+            <input name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php echo $email;?>"></label>
+        <br/>
+        <br/>
+        <label for="password">Állíts be egy erős jelszót!<br/>
+            <input name="password" id="password" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $password;?>"></label>
+        <br/>
+        <br/>
+        <label for="passwordcheck">Írd be újra a jelszót!<br/>
+            <input name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $passwordcheck;?>"></label>
+        <br/>
+        <br/>
+        <!-- ezt már a profil oldalon kéne?
+            <label for="imgToUpload" action="upload.php" method="post" enctype="multipart/form-data">Töltd fel egy képet magadról!<br/>
+            <input type="file" name="imgToUpload" id="imgToUpload"><br/>
+            <input type="submit" value="Kép feltöltése" name="submit"> -->
+        <br/>
+        <br/>
+        <label for="keres">Mit keresel?<br/></label> <select id="keres" name="keres">
+            <option value="orok szerelem"> Örök szerelem </option>
+            <option value="testi kapcsolat"> Testi Kapcsolat </option>
+            <option value="szentgral"> Szent Grál </option>
+            </select><br/>
+        <br/>
+        <label for="szin">Mi a kedvenc színed?<br/></label>
         <br/>
         <input type="color" id="szin" name="szin"
             value="#1e90ff">
-        <label for="szin"></label>
-        <br/>
         <br/>
         <br/>
         <label for="faj">Faj:<br/></label> <select id="faj" name="faj">
