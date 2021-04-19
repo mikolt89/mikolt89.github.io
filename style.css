@@ -240,6 +240,16 @@ figcaption:hover {
 	font-family: 'Aurebesh', sans serif;
 	color: #f1f1f1;
 }
+#nicknamein , #passwordin {
+	margin-left: 0;
+	width: 130px;
+	height: 25px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	margin-right: 5px;
+	transition: width 0.4s ease-in-out;
+}
+
 .main {
 	margin-left: 160px;
 	padding: 0 10px;
@@ -254,7 +264,7 @@ fieldset {
 	border-radius: 15px;
 	background-color: rgba(211, 211, 211, 0.9);
 }
-#ertekeles {
+#submit_sidenav {
 	height: 30px;
 	width: 200px;
 	background: rgb(0, 0, 0);
