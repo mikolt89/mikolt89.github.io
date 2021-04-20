@@ -1,98 +1,25 @@
-<?php
-# REGISZTRÁCIÓ #
-#VÁLTOZÓK#
-$name = $nickname = $email = $password = $passwordcheck = "";
-$nameErr = $nicknameErr = $emailErr = $passwordErr = $passwordcheckErr = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-      $nameErr = "Név megadása kötelező";
-    }else {
-      $name = test_input($_POST["name"]);
-      if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-        $nameErr = "Csak betűkből állhat a neved";
-    }}
-  
-    if (empty($_POST["nickname"])) {
-      $nicknameErr = "Nicknév megadása kötelező";
-    } else {
-      $nickname = test_input($_POST["nickname"]);
-      if (!preg_match("/^[a-z-' ]*$/",$name)) {
-        $nameErr = "Csak kisbetűkből állhat a nickneved";
-    }}
-  
-    if (empty($_POST["email"])) {
-      $emailErr = "Email megadása kötelező";
-    }else{
-      $email = test_input($_POST["email"]);
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Érvénytelen email formátum";}
-    }
-  
-    if (empty($_POST["password"])) {
-      $passwordErr = "Jelszó megadása kötelező";
-    } else {
-      $password = test_input($_POST["password"]);
-    }
-  
-    if (empty($_POST["passwordcheck"])) {
-        $passwordcheckErr = "Jelszó ismételt megadása kötelező";
-    }else{
-        $password = test_input($_POST["password"]);
-        if ($_POST["passwordcheck"]!=$password){
-            $passwordcheckErr = "A jelszavak nem egyeznek!";
-        }
-    }
-
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-}
-  
-
-
-#KÉPFELTÖLTÉS#
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["imgToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["imgToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "A kép túl nagy." . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "Nem képet töltöttél fel.";
-    $uploadOk = 0;
-  }
-}
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu">
-  <head>
-  <meta charset="UTF-8">
+<head>
+	<meta charset="UTF-8">
 	<link href="./img/Darth-Vader.ico" rel="icon">
 	<title>Csillagközi társkereső</title>
 	<link href="./style.css" rel="stylesheet">
 	<link href="./font.css" rel="stylesheet">
 	<link href="./mquery.css" rel="stylesheet">
-  </head>
+</head>
 <body>
 <!-- partial:index.partial.html -->
 <div id="banner-content"><img alt="Csillagközi Társkereső" src="./img/glx.png"></div>
 <div class="menusor">
-	<a class="active" href="./index.html">Kezdőlap</a> <a href="./regisztracio.html">Regisztráció</a> <a href="./toplista.html">Toplista</a> <a href="./oldalterkep.html">Oldaltérkép</a> <a href="./kapcsolat.html">Kapcsolat</a>
+	<a class="active" href="./index.php">Kezdőlap</a> <a href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
 	<a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a> <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a> <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a> <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a> <a href="#bemutatkozo">Bemutatkozó</a><br/>
 	<a href="#celunk">Célunk</a><br/>
 	<a href="#szolgaltatasok">Szolgáltatások</a><br/>
 	<a href="#velemenyek">Vélemények</a><br/>
-	<?php include 'signin.html';?>
-  <iframe class="yt" src="https://www.youtube.com/embed/nohQReM7BpI" title="YouTube video player"></iframe>
+	<iframe class="yt" src="https://www.youtube.com/embed/nohQReM7BpI" title="YouTube video player"></iframe>
 	<iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
 	<form method="post">
 		<fieldset>
@@ -162,4 +89,3 @@ if(isset($_POST["submit"])) {
 </footer>
 </body>
 </html>
-

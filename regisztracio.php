@@ -1,4 +1,36 @@
-<!DOCTYPE html>
+<?php
+include_once "signup.php";
+$unamereserved = false;
+$message = "";
+//LEHET HOGY EZ AZ EGÉSZ SOKKEL ELEGÁNSABB LENNE EGY HIBATÖMBBEN - vagy az err változókkal
+if(isset($_POST[""])){
+    if(!isset($_POST["name"])){
+        $nameErr = "Név megadása kötelező";
+        else {
+            $name = test_input($_POST["name"]);
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+              $nameErr = "Csak betűkből állhat a neved";
+          }}
+    } elseif(!isset($_POST["nickname"])){
+        die("A felhasználónév kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
+    } elseif(!isset($_POST["email"])){
+        die("Az e-mail cím kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
+    } elseif(!isset($_POST["password"])){
+        die("A jelszó kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
+    }elseif(!isset($_POST["passwordcheck"])){
+        die("A jelszó ellenőrző cella kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
+    }
+
+    if(strlen($_POST["nickname"])<6){
+        die("A felhasználónév legalább 6 karakterből álljon!", <a href="regisztracio.php">Vissza</a>);
+    }
+    //EZ A CHECK AZÉRT LEHETNE BONYOLULTABB, SZÁMOT KÉRJEN VAGY ILYESMI
+    if(strlen($_POST["password"])<6){
+        die("A jelszó legalább 8 karakterből álljon!", <a href="regisztracio.php">Vissza</a>);
+    }
+}
+
+?><!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -68,29 +100,27 @@
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
-            <input name="name" id="name" placeholder="Név..." type="text" value="<?php echo $name;?>"></label>
+            <input required name="name" id="name" placeholder="Név..." type="text" value="<?php echo $name;?>"></label>
         <br/>
         <br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo $nickname;?>"></label>
+            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo $nickname;?>"></label>
         <br/>
         <br/>        
         <label for="email">Írd meg a galaktikus e-mail címed!<br/>
-            <input name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php echo $email;?>"></label>
+            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php echo $email;?>"></label>
         <br/>
         <br/>
         <label for="password">Állíts be egy erős jelszót!<br/>
-            <input name="password" id="password" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $password;?>"></label>
+            <input required name="password" id="password" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $password;?>"></label>
         <br/>
         <br/>
         <label for="passwordcheck">Írd be újra a jelszót!<br/>
-            <input name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $passwordcheck;?>"></label>
+            <input required name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $passwordcheck;?>"></label>
         <br/>
-        <br/>
-        <!-- ezt már a profil oldalon kéne?
-            <label for="imgToUpload" action="upload.php" method="post" enctype="multipart/form-data">Töltd fel egy képet magadról!<br/>
-            <input type="file" name="imgToUpload" id="imgToUpload"><br/>
-            <input type="submit" value="Kép feltöltése" name="submit"> -->
+        <br/>       
+        <label for="imgToUpload">Tölts fel egy képet magadról!<br/>
+            <input type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
         <br/>
         <br/>
         <label for="keres">Mit keresel?<br/></label> <select id="keres" name="keres">
@@ -236,17 +266,17 @@
     <br/>
         <label>Identitás:</label><br/>
         <input id="birodalmi" name="identity" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br/>
-        <input checked id="koztarsasagi" name="identity" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br/>
+        <input id="koztarsasagi" name="identity" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br/>
         <br/>
         <br/>
         <label>Érdeklődés:</label><br/>
         <br/>
-        <input checked id="aiwha" name="aiwha" type="checkbox" value="Aiwha"> <label for="aiwha">Aiwha</label><br/>
-        <input checked id="aleena" name="aleena" type="checkbox" value="Aleena"> <label for="aleena">Aleena</label><br/>
+        <input id="aiwha" name="aiwha" type="checkbox" value="Aiwha"> <label for="aiwha">Aiwha</label><br/>
+        <input id="aleena" name="aleena" type="checkbox" value="Aleena"> <label for="aleena">Aleena</label><br/>
         <input id="anx" name="anx" type="checkbox"> <label for="anx">Anx</label><br/>
         <input id="balosar" name="balosar" type="checkbox"> <label for="balosar">Balosar</label><br/>
         <input id="besalisk" name="besalisk" type="checkbox"> <label for="besalisk">Besalisk</label><br/>
-        <input checked id="cereai" name="cereai" type="checkbox" value="Cereai"> <label for="cereai">Cereai</label><br/>
+        <input id="cereai" name="cereai" type="checkbox" value="Cereai"> <label for="cereai">Cereai</label><br/>
         <input id="chagrian" name="chagrian" type="checkbox"> <label for="chagrian">Chagrian</label><br/>
         <input id="dathomiri_zabrak" name="dathomiri_zabrak" type="checkbox"> <label for="dathomiri_zabrak">Dathomiri zabrak</label><br/>
         <input id="devlikk" name="devlikk" type="checkbox"> <label for="devlikk">Devlikk</label><br/>
@@ -257,12 +287,12 @@
         <input id="gungan" name="gungan" type="checkbox"> <label for="gungan">Gungan</label><br/>
         <input id="iktotchi" name="iktotchi" type="checkbox"> <label for="iktotchi">Iktotchi</label><br/>
         <input id="klatooinian" name="klatooinian" type="checkbox"> <label for="klatooinian">Klatooinian</label><br/>
-        <input checked id="muun" name="muun" type="checkbox" value="Muun"> <label for="muun">Muun</label><br/>
+        <input id="muun" name="muun" type="checkbox" value="Muun"> <label for="muun">Muun</label><br/>
         <input id="nautolani" name="nautolani" type="checkbox"> <label for="nautolani">Nautolani</label><br/>
         <input id="seloniai" name="seloniai" type="checkbox"> <label for="seloniai">Seloniai</label><br/>
         <input id="togruta" name="togruta" type="checkbox"> <label for="togruta">Togruta</label><br/>
         <input id="toydari" name="toydari" type="checkbox"> <label for="toydari">Toydari</label><br/>
-        <input checked id="twilek" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br/>
+        <input id="twilek" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br/>
         <br/>
         <label for="hozzajarulas"></label><br/>
         <input id="hozzajarulas" name="hozzajarulas" type="checkbox"> <label for="hozzajarulas">Elolvastam az <a href="files/Adatv%C3%A9delmi%20ir%C3%A1nyelvek.pdf" target="_blank">adatvédelmi irányelveket</a>, hozzájárulok adataim tárolásához.</label><br/>
