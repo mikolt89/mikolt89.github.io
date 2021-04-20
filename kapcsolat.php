@@ -14,7 +14,7 @@ include_once "footer.php";
 <body>
 <div id="banner-content"><img alt="Kapcsolat" src="./img/kapcs.jpg"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.html">Kezdőlap</a> <a href="./regisztracio.html">Regisztráció</a> <a href="./toplista.html">Toplista</a> <a href="./oldalterkep.html">Oldaltérkép</a> <a class="active" href="./kapcsolat.html">Kapcsolat</a>
+    <a href="./index.php">Kezdőlap</a> <a href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a class="active" href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
     <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>

@@ -13,11 +13,7 @@
     <img src="./img/oldmap.png" alt="Oldaltérkép">
 </div>
   <div class="menusor" id="lpMenusor">
-      <a href="./index.html">Kezdőlap</a>
-      <a href="./regisztracio.html">Regisztráció</a>
-      <a href="./toplista.html">Toplista</a>
-      <a class="active" href="./oldalterkep.html">Oldaltérkép</a>
-      <a href="./kapcsolat.html">Kapcsolat</a>
+  <a href="./index.php">Kezdőlap</a> <a href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a class="active" href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
   </div>
 <aside class="sidenav">
   <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img src="img/fb.png" class="socmedia" alt="facebook-icon"></a>

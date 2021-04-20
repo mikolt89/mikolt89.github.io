@@ -1,13 +1,10 @@
 <?php
-# REGISZTRÁCIÓ #
-#VÁLTOZÓK#
+class User{
 private $name; 
 private $nickname;
 private $email;
 private $password;
 private $passwordcheck;
-
-$nameErr = $nicknameErr = $emailErr = $passwordErr = $passwordcheckErr = "";
 
 public function __construct($name, $nickname, $email, $password, $passwordcheck){
     $this->name = $name;
@@ -67,9 +64,10 @@ public function _savetxt(){
         "password" => $this-> password,
         "passwordcheck" => $this-> passwordcheck,
     ];
-    $file fopen("users.txt", "a"){
-        fwrite($file, serialize($user) ."\n);
-        fclose($file);
+    $file = fopen("users.txt", "a");
+    fwrite($file, serialize($user) ."\n");
+    fclose($file);
     }
 }
+
 ?>

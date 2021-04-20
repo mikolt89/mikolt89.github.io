@@ -1,34 +1,37 @@
 <?php
 include_once "signup.php";
 $unamereserved = false;
-$message = "";
-//LEHET HOGY EZ AZ EGÉSZ SOKKEL ELEGÁNSABB LENNE EGY HIBATÖMBBEN - vagy az err változókkal
-if(isset($_POST[""])){
+//$message = "";
+$nameErr = $nicknameErr = $emailErr = $passwordErr = $passwordcheckErr = "";
+if(isset($_POST["reg"])){
     if(!isset($_POST["name"])){
-        $nameErr = "Név megadása kötelező";
-        else {
-            $name = test_input($_POST["name"]);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-              $nameErr = "Csak betűkből állhat a neved";
-          }}
-    } elseif(!isset($_POST["nickname"])){
-        die("A felhasználónév kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
-    } elseif(!isset($_POST["email"])){
-        die("Az e-mail cím kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
-    } elseif(!isset($_POST["password"])){
-        die("A jelszó kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
-    }elseif(!isset($_POST["passwordcheck"])){
-        die("A jelszó ellenőrző cella kitöltése kötelező!", <a href="regisztracio.php">Vissza</a>);
-    }
-
-    if(strlen($_POST["nickname"])<6){
-        die("A felhasználónév legalább 6 karakterből álljon!", <a href="regisztracio.php">Vissza</a>);
-    }
-    //EZ A CHECK AZÉRT LEHETNE BONYOLULTABB, SZÁMOT KÉRJEN VAGY ILYESMI
-    if(strlen($_POST["password"])<6){
-        die("A jelszó legalább 8 karakterből álljon!", <a href="regisztracio.php">Vissza</a>);
-    }
+        global $nameErr;
+        $nameErr= "Név megadása kötelező";}
+//        else {
+//            $name = test_input($_POST["name"]);
+//            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+//              $nameErr = "Csak betűkből állhat a neved";
+//            }elseif(strlen($_POST["nickname"])<6){
+//                $nameErr = "A felhasználónév legalább 6 karakterből álljon!";
+//        }
+//    }
 }
+//     elseif(!isset($_POST["nickname"])){
+//        die("A felhasználónév kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
+//    } elseif(!isset($_POST["email"])){
+//        die("Az e-mail cím kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
+//    } elseif(!isset($_POST["password"])){
+//        die("A jelszó kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
+//    }elseif(!isset($_POST["passwordcheck"])){
+//        die("A jelszó ellenőrző cella kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
+//    }
+
+    
+    //EZ A CHECK AZÉRT LEHETNE BONYOLULTABB, SZÁMOT KÉRJEN VAGY ILYESMI
+//    if(strlen($_POST["password"])<6){
+//        die("A jelszó legalább 8 karakterből álljon!" <a href="regisztracio.php">Vissza</a>);
+//   }
+//}
 
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -43,7 +46,7 @@ if(isset($_POST[""])){
 <body>
 <div id="banner-content"><img alt="Regisztráció" src="./img/reg.png"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.html">Kezdőlap</a> <a class="active" href="./regisztracio.html">Regisztráció</a> <a href="./toplista.html">Toplista</a> <a href="./oldalterkep.html">Oldaltérkép</a> <a href="./kapcsolat.html">Kapcsolat</a>
+    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
     <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
@@ -96,13 +99,13 @@ if(isset($_POST[""])){
 </aside><br/>
 <br/>
 <br/>
-<form id="reg" method="POST" name="reg">
+<form id="reg" method="POST" action="regisztracio.php" name="reg" enctype="multipart/form-data">
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
             <input required name="name" id="name" placeholder="Név..." type="text" value="<?php echo $name;?>"></label>
-        <br/>
-        <br/>
+            <span class="error">* <?php echo $nameErr;?></span>
+        <br/><br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
             <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo $nickname;?>"></label>
         <br/>
@@ -204,7 +207,7 @@ if(isset($_POST[""])){
         </option>
     </select><br/>
     <br/>
-        <label for="lakhely">Bolygó:<br/></label> <select id="lakhely" name="bolygo">
+        <label for="lakhely">Bolygó:<br/></label> <select id="lakhely" name="lakhely">
         <option value="alderaan">
             Alderaan
         </option>
@@ -265,8 +268,8 @@ if(isset($_POST[""])){
     </select><br/>
     <br/>
         <label>Identitás:</label><br/>
-        <input id="birodalmi" name="identity" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br/>
-        <input id="koztarsasagi" name="identity" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br/>
+        <input id="birodalmi" name="birodalmi" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br/>
+        <input id="koztarsasagi" name="koztarsasagi" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br/>
         <br/>
         <br/>
         <label>Érdeklődés:</label><br/>
