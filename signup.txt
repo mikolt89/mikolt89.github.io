@@ -1,4 +1,4 @@
-<?php 
+
 include_once "users.php";
 session_start();
 $file = fopen("users.txt", "a+");
@@ -9,4 +9,4 @@ while(($line = fgets($file)) !== false){
     array_push($_SESSION["registeredUsers"], $newUser);
 }
 fclose($file);
-?>
+

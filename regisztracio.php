@@ -1,7 +1,7 @@
 <?php
-//session_start();
+session_start();
 include_once "footer.php";
-include_once "signup.php";
+//include_once "signup.php";
 include_once "functions.php";
 // CSONGOR - Innentol indul a vizsgalat, hiba eseten die alapjan szerepel minden egészen...
 /*if(isset($_POST["regiszto"])){
@@ -83,7 +83,7 @@ $fiokok = loadUsers("users.txt");
       $hobbik = $_POST["hobbik"];*/
 
     
-    foreach ($fiokok as $fiok) {
+    /*foreach ($fiokok as $fiok) {
       if ($fiok["nickname"] === $nickname)
         $errors[] = "A felhasználónév már foglalt!";
     }
@@ -92,7 +92,7 @@ $fiokok = loadUsers("users.txt");
       $errors[] = "A jelszónak legalább 6 karakter hosszúnak kell lennie!";
 
     if ($password !== $passwordcheck)
-      $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";
+      $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";*/
 
     if (count($errors) === 0) {
       $fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
@@ -187,15 +187,15 @@ $fiokok = loadUsers("users.txt");
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
-            <input required name="name" id="name" placeholder="Név..." type="text">
+            <input required name="name" id="name" placeholder="Név..." type="text" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" >
         </label>
         <br/><br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text"></label>
+            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo count($fiokok); ?>"></label>
         <br/>
         <br/>        
         <label for="email">Írd meg a galaktikus e-mail címed!<br/>
-            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text"></label>
+            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"></label>
         <br/>
         <br/>
         <label for="password">Állíts be egy erős jelszót!<br/>
@@ -207,7 +207,7 @@ $fiokok = loadUsers("users.txt");
         <br/>
         <br/>       
         <label for="imgToUpload">Tölts fel egy képet magadról!<br/>
-            <input required type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
+            <input type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
         <br/>
         <br/>
         <label for="keres">Mit keresel?<br/></label> <select id="keres" name="keres">
