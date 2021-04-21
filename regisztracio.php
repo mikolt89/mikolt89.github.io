@@ -96,7 +96,7 @@ $fiokok = loadUsers("users.txt");
 
 //    if (count($errors) === 0) {
       //$fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
-      $fiokok[] = ["name" => "name", "nickname" => "nickname","email" => "email","password" => "password", "passwordcheck" => "passwordcheck"];
+      $fiokok = array("name" => "name", "nickname" => "nickname","email" => "email","password" => "password", "passwordcheck" => "passwordcheck");
       //saveUsers("users.txt", $fiokok);
 //      $siker = TRUE;
       //header("Location: login.php");
@@ -118,7 +118,7 @@ $fiokok = loadUsers("users.txt");
 <body>
 <div id="banner-content"><img alt="Regisztráció" src="./img/reg.png"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regiszto.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
+    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
     <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
@@ -180,8 +180,7 @@ $fiokok = loadUsers("users.txt");
 
 foreach($fiokok as $x => $x_value) {
     echo "Key=" . $x . ", Value=" . $x_value;
-    echo "<br>";
-  }
+}
           if (isset($siker) && $siker === TRUE) { 
             echo "<p>Sikeres regisztráció!</p>";
           } else {                                
@@ -198,7 +197,8 @@ foreach($fiokok as $x => $x_value) {
         </label>
         <br/><br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo count($fiokok); ?>"></label>
+            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="
+            <?php foreach($fiokok as $x => $x_value) { echo "Key=" . $x . ", Value=" . $x_value;} ?>"></label>
         <br/>
         <br/>        
         <label for="email">Írd meg a galaktikus e-mail címed!<br/>
