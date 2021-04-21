@@ -1,3 +1,6 @@
+<?php
+include_once "footer.php";
+?>
 <!DOCTYPE html>
 <html lang="hu" >
 <head>
@@ -75,12 +78,9 @@
     <div id="home">
       <a href="#banner-content"><img src="img/li_icon.gif" class="home" alt="Lap tetejére" title="Lap tetejére"></a>
     </div>
-    <footer>
-      <p class="quotation"><sub>"</sub></p>
-      <q>A szerelem <strong>mindenkit</strong> megszépít.</q>
-        <h3>Csillagközi Társkereső © 2021 Csaba-Tóth Zsófia és Tarjányi Csongor</h3>
-    </footer>
-    <!-- partial -->
+<?php
+footer();
+?>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
       $nameErr = "Név megadása kötelező";
@@ -63,3 +64,5 @@ if(isset($_POST["submit"])) {
     echo "Nem képet töltöttél fel.";
     $uploadOk = 0;
   }
+}
+?>

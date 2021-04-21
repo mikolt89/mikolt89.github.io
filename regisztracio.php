@@ -1,39 +1,58 @@
 <?php
+include_once "footer.php";
 include_once "signup.php";
 $unamereserved = false;
-//$message = "";
-$nameErr = $nicknameErr = $emailErr = $passwordErr = $passwordcheckErr = "";
-if(isset($_POST["reg"])){
-    if(!isset($_POST["name"])){
-        global $nameErr;
-        $nameErr= "Név megadása kötelező";}
-//        else {
-//            $name = test_input($_POST["name"]);
-//            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-//              $nameErr = "Csak betűkből állhat a neved";
-//            }elseif(strlen($_POST["nickname"])<6){
-//                $nameErr = "A felhasználónév legalább 6 karakterből álljon!";
-//        }
-//    }
+$message = "";
+// CSONGOR - Innentol indul a vizsgalat, hiba eseten die alapjan szerepel minden egészen...
+if(isset($_POST["regisztracio"])){
+    if(!isset($_POST["name"]) || !isset($_POST["nickname"]) || !isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["passwordcheck"])){
+        die("<strong>HIBA:</strong> Nincs minden kötelező mező kitöltve! <a href='regisztracio.php'Vissza a Regisztrációhoz</a>");
+    }
+    if(strlen($_POST["nickname"])<5){
+        die("<strong>HIBA: </strong> A felhasználónévnek legalább 5 karakter hosszúnak kell lennie! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+
+    }
+    if(strlen($_POST["password"])<8){
+        die("<strong>HIBA: </strong> A jelszónak legalább 8 karakter hosszúnak kell lennie! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+    }
+    for ($i=0;$i<count($_SESSION["registeredUsers"]);$i++){
+        if($_SESSION["registeredUsers"][$i]->getNickname() == $_POST["nickname"]){
+            $unamereserved=true;
+        }
+    }
+    if($unamereserved){
+        die("<strong>HIBA: </strong> A felhasználónév ebben a galaxisban már foglalt! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+    }else{
+        if(isset($_FILES["profilkep"])){
+            $kiterjesztesek=["jpg" , "png"];
+            $kepkiterjesztes = strtolower(pathinfo($_FILES["profilkep"]["name"], PATHINFO_EXTENSION));
+            if(in_array($kepkiterjesztes,$kiterjesztesek)){
+                if($_FILES["profilkep"]["error"]===0){
+                    if($_FILES["profilkep"]["size"]<=31456280){
+                        $cel = "profil/".$_POST["nickname"].".".$kepkiterjesztes;
+                    }if(move_uploaded_file($_FILES["profilkep"]["tmp_name"],$cel)){
+                        $message.="Sikeres feltöltés!";
+                    } else{
+                        die("<strong>HIBA: </strong> Sikertelen képátmozgatás! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+                    }
+                }else{
+                    die("<strong>HIBA: </strong> A kép mérete túl nagy! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+                }
+            }else{
+                die("<strong>HIBA: </strong> A fájlfeltöltés során hiba lépett fel. <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+            }
+        }else{
+            die("<strong>HIBA: </strong> Nem megfelelő a feltöltött fájl kiterjesztése! Válassz csak .jpg és .png fájlt! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+        }
+    }
+    $uj = new User($_POST["name"],$_POST["nickname"],$_POST["email"],$_POST["password"],$_POST["passwordcheck"],$_POST["nickname"].".".$kepkiterjesztes);
+    array_push($_SESSION["registeredUsers"],$uj);
+    $uj->savetxt();
+    $message.="Sikeres regisztráció!";
 }
-//     elseif(!isset($_POST["nickname"])){
-//        die("A felhasználónév kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
-//    } elseif(!isset($_POST["email"])){
-//        die("Az e-mail cím kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
-//    } elseif(!isset($_POST["password"])){
-//        die("A jelszó kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
-//    }elseif(!isset($_POST["passwordcheck"])){
-//        die("A jelszó ellenőrző cella kitöltése kötelező!" <a href="regisztracio.php">Vissza</a>);
-//    }
-
-    
-    //EZ A CHECK AZÉRT LEHETNE BONYOLULTABB, SZÁMOT KÉRJEN VAGY ILYESMI
-//    if(strlen($_POST["password"])<6){
-//        die("A jelszó legalább 8 karakterből álljon!" <a href="regisztracio.php">Vissza</a>);
-//   }
-//}
-
-?><!DOCTYPE html>
+//eddig a pontig. Nem működik rendesen még mindig. /CSONGOR
+?>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -99,31 +118,34 @@ if(isset($_POST["reg"])){
 </aside><br/>
 <br/>
 <br/>
-<form id="reg" method="POST" action="regisztracio.php" name="reg" enctype="multipart/form-data">
+<?php //CSONGOR - ezzel teszteltem, hogy végigmegy-e a regisztráció vagy sem. Ha igen, kiírja fent, ha nem, akkor nem...
+if($message != "") echo "<p>.$message.</p>" ?>
+<form id="reg" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="reg" enctype="multipart/form-data">
+    <!-- CSONGOR - Ez a rész akadályozza meg, hogy JS-t lehessen írni a mezőkbe, vagyis hackelgetni lehessen az oldalt -->
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
-            <input required name="name" id="name" placeholder="Név..." type="text" value="<?php echo $name;?>"></label>
-            <span class="error">* <?php echo $nameErr;?></span>
+            <input required name="name" id="name" placeholder="Név..." type="text">
+        </label>
         <br/><br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="<?php echo $nickname;?>"></label>
+            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text"></label>
         <br/>
         <br/>        
         <label for="email">Írd meg a galaktikus e-mail címed!<br/>
-            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php echo $email;?>"></label>
+            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text"></label>
         <br/>
         <br/>
         <label for="password">Állíts be egy erős jelszót!<br/>
-            <input required name="password" id="password" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $password;?>"></label>
+            <input required name="password" id="password" placeholder="cH9wb#ccĐ" type="password"></label>
         <br/>
         <br/>
         <label for="passwordcheck">Írd be újra a jelszót!<br/>
-            <input required name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password" value="<?php echo $passwordcheck;?>"></label>
+            <input required name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password"></label>
         <br/>
         <br/>       
         <label for="imgToUpload">Tölts fel egy képet magadról!<br/>
-            <input type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
+            <input required type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
         <br/>
         <br/>
         <label for="keres">Mit keresel?<br/></label> <select id="keres" name="keres">
@@ -309,9 +331,8 @@ if(isset($_POST["reg"])){
 <div id="home">
     <a href="#banner-content"><img alt="Lap tetejére" class="home" src="img/li_icon.gif" title="Lap tetejére"></a>
 </div>
-<footer>
-    <p class="quotation"><sub>"</sub></p><q><s>Együtt uralhatjuk a gala</s>...vagyis együtt bármi sikerülhet, csak rajtatok <s>és az Erőn</s> múlik!</q>
-    <h3>Csillagközi Társkereső © 2021 Csaba-Tóth Zsófia és Tarjányi Csongor</h3>
-</footer>
+<?php
+footer();
+?>
 </body>
 </html>

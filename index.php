@@ -1,3 +1,6 @@
+<?php
+include_once "footer.php";
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -81,11 +84,8 @@
 <div id="home">
 	<a href="#banner-content"><img alt="Lap tetejére" class="home" src="img/li_icon.gif" title="Lap tetejére"></a>
 </div>
-<footer>
-	<blockquote cite="A%20birodalom%20visszav%C3%A1g">
-		<p class="quotation"><sub>"</sub></p>Ne próbáld! Tedd, vagy ne tedd, de ne próbáld!
-	</blockquote>
-	<h3>Csillagközi Társkereső © 2021 Csaba-Tóth Zsófia és Tarjányi Csongor</h3>
-</footer>
+<?php
+footer();
+?>
 </body>
 </html>

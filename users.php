@@ -5,13 +5,15 @@ private $nickname;
 private $email;
 private $password;
 private $passwordcheck;
+private $profilkep;
 
-public function __construct($name, $nickname, $email, $password, $passwordcheck){
+public function __construct($name, $nickname, $email, $password, $passwordcheck, $profilkep){
     $this->name = $name;
     $this->nickname = $nickname;
     $this-> email = $email;
     $this-> password = $password;
     $this-> passwordcheck = $passwordcheck;
+    $this-> profilkep = $profilkep;
 }
 
 public function getName(){
@@ -56,13 +58,30 @@ public function setPasswordcheck($passwordcheck){
     return $this;
 }
 
-public function _savetxt(){
+    /**
+     * @return mixed
+     */
+    public function getProfilkep()
+    {
+        return $this->profilkep;
+    }
+
+    /**
+     * @param mixed $profilkep
+     */
+    public function setProfilkep($profilkep)
+    {
+        $this->profilkep = $profilkep;
+    }
+
+public function savetxt(){
     $user = [
         "name" => $this->name,
         "nickname"=> $this->nickname,
         "email" => $this-> email,
         "password" => $this-> password,
         "passwordcheck" => $this-> passwordcheck,
+        "profilkep" => $this-> profilkep,
     ];
     $file = fopen("users.txt", "a");
     fwrite($file, serialize($user) ."\n");
