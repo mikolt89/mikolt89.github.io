@@ -97,7 +97,7 @@ $fiokok = loadUsers("users.txt");
 //    if (count($errors) === 0) {
       //$fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
       $fiokok = array("name" => "name", "nickname" => "nickname","email" => "email","password" => "password", "passwordcheck" => "passwordcheck");
-      //saveUsers("users.txt", $fiokok);
+      saveUsers("users.txt", $fiokok);
 //      $siker = TRUE;
       //header("Location: login.php");
 //    } else {
@@ -197,8 +197,7 @@ foreach($fiokok as $x => $x_value) {
         </label>
         <br/><br/>
         <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" value="
-            <?php foreach($fiokok as $x => $x_value) { echo "Key=" . $x . ", Value=" . $x_value;} ?>"></label>
+            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" ></label>
         <br/>
         <br/>        
         <label for="email">Írd meg a galaktikus e-mail címed!<br/>
