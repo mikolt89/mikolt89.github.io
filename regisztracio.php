@@ -1,19 +1,19 @@
 <?php
+//session_start();
 include_once "footer.php";
 include_once "signup.php";
-$unamereserved = false;
-$message = "";
+include_once "functions.php";
 // CSONGOR - Innentol indul a vizsgalat, hiba eseten die alapjan szerepel minden egészen...
-if(isset($_POST["regisztracio"])){
+/*if(isset($_POST["regiszto"])){
     if(!isset($_POST["name"]) || !isset($_POST["nickname"]) || !isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["passwordcheck"])){
-        die("<strong>HIBA:</strong> Nincs minden kötelező mező kitöltve! <a href='regisztracio.php'Vissza a Regisztrációhoz</a>");
+        die("<strong>HIBA:</strong> Nincs minden kötelező mező kitöltve! <a href='regiszto.php'Vissza a Regisztrációhoz</a>");
     }
     if(strlen($_POST["nickname"])<5){
-        die("<strong>HIBA: </strong> A felhasználónévnek legalább 5 karakter hosszúnak kell lennie! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+        die("<strong>HIBA: </strong> A felhasználónévnek legalább 5 karakter hosszúnak kell lennie! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
 
     }
     if(strlen($_POST["password"])<8){
-        die("<strong>HIBA: </strong> A jelszónak legalább 8 karakter hosszúnak kell lennie! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+        die("<strong>HIBA: </strong> A jelszónak legalább 8 karakter hosszúnak kell lennie! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
     }
     for ($i=0;$i<count($_SESSION["registeredUsers"]);$i++){
         if($_SESSION["registeredUsers"][$i]->getNickname() == $_POST["nickname"]){
@@ -21,7 +21,7 @@ if(isset($_POST["regisztracio"])){
         }
     }
     if($unamereserved){
-        die("<strong>HIBA: </strong> A felhasználónév ebben a galaxisban már foglalt! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+        die("<strong>HIBA: </strong> A felhasználónév ebben a galaxisban már foglalt! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
     }else{
         if(isset($_FILES["profilkep"])){
             $kiterjesztesek=["jpg" , "png"];
@@ -33,24 +33,76 @@ if(isset($_POST["regisztracio"])){
                     }if(move_uploaded_file($_FILES["profilkep"]["tmp_name"],$cel)){
                         $message.="Sikeres feltöltés!";
                     } else{
-                        die("<strong>HIBA: </strong> Sikertelen képátmozgatás! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+                        die("<strong>HIBA: </strong> Sikertelen képátmozgatás! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
                     }
                 }else{
-                    die("<strong>HIBA: </strong> A kép mérete túl nagy! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+                    die("<strong>HIBA: </strong> A kép mérete túl nagy! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
                 }
             }else{
-                die("<strong>HIBA: </strong> A fájlfeltöltés során hiba lépett fel. <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+                die("<strong>HIBA: </strong> A fájlfeltöltés során hiba lépett fel. <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
             }
         }else{
-            die("<strong>HIBA: </strong> Nem megfelelő a feltöltött fájl kiterjesztése! Válassz csak .jpg és .png fájlt! <a href='regisztracio.php'>Vissza a Regisztrációhoz</a>");
+            die("<strong>HIBA: </strong> Nem megfelelő a feltöltött fájl kiterjesztése! Válassz csak .jpg és .png fájlt! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
         }
     }
     $uj = new User($_POST["name"],$_POST["nickname"],$_POST["email"],$_POST["password"],$_POST["passwordcheck"],$_POST["nickname"].".".$kepkiterjesztes);
     array_push($_SESSION["registeredUsers"],$uj);
     $uj->savetxt();
-    $message.="Sikeres regisztráció!";
-}
+    $message.="Sikeres Regisztráció!";
+}*/
 //eddig a pontig. Nem működik rendesen még mindig. /CSONGOR
+//9.gyakanyagból
+$fiokok = loadUsers("users.txt");
+
+    $errors = [];
+    $siker;
+
+    if (isset($_POST["reg"])) { 
+    /*if (!isset($_POST["name"]) || trim($_POST["name"]) === "")
+      $errors[] = "A név megadása kötelező!";
+    if (!isset($_POST["nickname"]) || trim($_POST["nickname"]) === "")
+      $errors[] = "A felhasználónév megadása kötelező!";
+    if (!isset($_POST["email"]) || trim($_POST["email"]) === "")
+      $errors[] = "Az e-mail megadása kötelező!";
+    if (!isset($_POST["password"]) || trim($_POST["password"]) === "" || !isset($_POST["passwordcheck"]) || trim($_POST["passwordcheck"]) === "")
+      $errors[] = "A jelszó és az ellenőrző jelszó megadása kötelező!";*/
+
+    $name = $_POST["name"]; //itt szerintem majd a settereket kell használni, de egyelőre nem mertem lecserélni
+    $nickname = $_POST["nickname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $passwordcheck = $_POST["passwordcheck"];
+    
+    /* EZ NEKÜNK EGYELŐRE NEM KELL
+    $nem = NULL;
+    $hobbik = NULL;
+
+    if (isset($_POST["nem"]))
+      $nem = $_POST["nem"];
+    if (isset($_POST["hobbik"]))
+      $hobbik = $_POST["hobbik"];*/
+
+    
+    foreach ($fiokok as $fiok) {
+      if ($fiok["nickname"] === $nickname)
+        $errors[] = "A felhasználónév már foglalt!";
+    }
+
+    if (strlen($password) < 6)
+      $errors[] = "A jelszónak legalább 6 karakter hosszúnak kell lennie!";
+
+    if ($password !== $passwordcheck)
+      $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";
+
+    if (count($errors) === 0) {
+      $fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
+      saveUsers("users.txt", $fiokok);
+      $siker = TRUE;
+      //header("Location: login.php");
+    } else {
+      $siker = FALSE;
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -65,7 +117,7 @@ if(isset($_POST["regisztracio"])){
 <body>
 <div id="banner-content"><img alt="Regisztráció" src="./img/reg.png"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
+    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regiszto.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
     <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
@@ -88,6 +140,7 @@ if(isset($_POST["regisztracio"])){
     <br/>
     <iframe class="yt" src="https://www.youtube.com/embed/D-Sv6fu-udU" title="YouTube video player"></iframe>
     <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
+        
     <form method="POST">
         <fieldset>
             <p class="alpont">Értékelje oldalunkat!</p><br/>
@@ -118,10 +171,19 @@ if(isset($_POST["regisztracio"])){
 </aside><br/>
 <br/>
 <br/>
-<?php //CSONGOR - ezzel teszteltem, hogy végigmegy-e a regisztráció vagy sem. Ha igen, kiírja fent, ha nem, akkor nem...
-if($message != "") echo "<p>.$message.</p>" ?>
-<form id="reg" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="reg" enctype="multipart/form-data">
+<?php //CSONGOR - ezzel teszteltem, hogy végigmegy-e a Regisztráció vagy sem. Ha igen, kiírja fent, ha nem, akkor nem...
+//if($message != "") echo "<p>.$message.</p>" ?>
+<form id="reg" method="POST" action="regisztracio.php" name="reg" enctype="multipart/form-data">
     <!-- CSONGOR - Ez a rész akadályozza meg, hogy JS-t lehessen írni a mezőkbe, vagyis hackelgetni lehessen az oldalt -->
+    <?php
+          if (isset($siker) && $siker === TRUE) { 
+            echo "<p>Sikeres regisztráció!</p>";
+          } else {                                
+            foreach ($errors as $error) {
+              echo "<p>" . $error . "</p>";
+            }
+          }
+        ?>
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
@@ -320,7 +382,7 @@ if($message != "") echo "<p>.$message.</p>" ?>
         <input id="twilek" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br/>
         <br/>
         <label for="hozzajarulas"></label><br/>
-        <input id="hozzajarulas" name="hozzajarulas" type="checkbox"> <label for="hozzajarulas">Elolvastam az <a href="files/Adatv%C3%A9delmi%20ir%C3%A1nyelvek.pdf" target="_blank">adatvédelmi irányelveket</a>, hozzájárulok adataim tárolásához.</label><br/>
+        <input required id="hozzajarulas" name="hozzajarulas" type="checkbox"> <label for="hozzajarulas">Elolvastam az <a href="files/Adatv%C3%A9delmi%20ir%C3%A1nyelvek.pdf" target="_blank">adatvédelmi irányelveket</a>, hozzájárulok adataim tárolásához.</label><br/>
         <br/>
         <label for="hirlevel"></label><br/>
         <input id="hirlevel" name="hirlevel" type="checkbox"> <label for="hirlevel">Kérem a személyre szabott tippeket a randizáshoz, és a nekem ajánlott entitásokat!</label><br/>
