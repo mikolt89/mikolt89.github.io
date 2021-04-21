@@ -94,14 +94,15 @@ $fiokok = loadUsers("users.txt");
     if ($password !== $passwordcheck)
       $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";*/
 
-    if (count($errors) === 0) {
-      $fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
-      saveUsers("users.txt", $fiokok);
-      $siker = TRUE;
+//    if (count($errors) === 0) {
+      //$fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
+      $fiokok[] = ["name" => "name", "nickname" => "nickname","email" => "email","password" => "password", "passwordcheck" => "passwordcheck"];
+      //saveUsers("users.txt", $fiokok);
+//      $siker = TRUE;
       //header("Location: login.php");
-    } else {
-      $siker = FALSE;
-    }
+//    } else {
+//      $siker = FALSE;
+//    }
   }
 ?>
 <!DOCTYPE html>
@@ -176,6 +177,11 @@ $fiokok = loadUsers("users.txt");
 <form id="reg" method="POST" action="regisztracio.php" name="reg" enctype="multipart/form-data">
     <!-- CSONGOR - Ez a rész akadályozza meg, hogy JS-t lehessen írni a mezőkbe, vagyis hackelgetni lehessen az oldalt -->
     <?php
+
+foreach($fiokok as $x => $x_value) {
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+  }
           if (isset($siker) && $siker === TRUE) { 
             echo "<p>Sikeres regisztráció!</p>";
           } else {                                
@@ -184,6 +190,7 @@ $fiokok = loadUsers("users.txt");
             }
           }
         ?>
+        
     <fieldset>
         <legend>Regisztráció:</legend>
         <label for="name">Mondd meg, mi a neved!<br/>
