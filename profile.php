@@ -12,6 +12,7 @@
   		case "K" : return "köztársasági"; break;
   		case "L" : return "lázadó"; break;
   	}
+
   }
 ?><!DOCTYPE html>
 <html lang="hu">
@@ -24,6 +25,7 @@
     <link href="./mquery.css" rel="stylesheet">
 </head>
 <body>
+<div id="banner-content"><img alt="Regisztráció" src="./img/prof.jpg"></div>
 <div class="menusor" id="lpMenusor">
     <a href="./index.php">Kezdőlap</a>
     <a href="./toplista.php">Toplista</a>
@@ -68,16 +70,15 @@
           <?php } ?>  
     
 </aside>
-
       <fieldset>
         <legend>Profilom:</legend>
                 <?php
         	echo "<ul>";
-        	 // echo "<li>'<img src="/uploads/"'. $_SESSION["user"]["foto"] .' alt="profilkép" width="280"</li>";
-		      echo "<li>Felhasználónév: " . $_SESSION["user"]["nickname"] . "</li>";
-		      echo "<li>Név: " . $_SESSION["user"]["name"] . "</li>";
-		      echo "<li>Identitás: " . identity($_SESSION["user"]["identity"]) . "</li>";
-		      echo "<li>Érdeklődés: " . implode(", ", $_SESSION["user"]["erdeklodes"]) . "</li>";
+        	  echo "<li><img class='profilkep' src=uploads/" . $_SESSION["user"]["fotonev"] . " /><br/><br/></li>";
+		      echo "<li><h3 class='alpont'>Felhasználónév: " . $_SESSION["user"]["nickname"] . " </h3></li><br/>";
+		      echo "<li><h3 class='alpont'>Név: " . $_SESSION["user"]["name"] . " </h3></li><br/>";
+		      echo "<li><h3 class='alpont'>Identitás: " . identity($_SESSION["user"]["identity"]) . " </h3></li><br/>";
+		      echo "<li><h3 class='alpont'>Érdeklődés: " . implode(", ", $_SESSION["user"]["erdeklodes"]) . " </h3></li><br/>";
 		      echo "</ul>";
         ?>
       </fieldset>

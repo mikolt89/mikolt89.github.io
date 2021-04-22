@@ -29,6 +29,7 @@
     $password2 = $_POST["password2"];
     $name = $_POST["name"];
     $foto = $_FILES["fileToUpload"];
+    $fotonev= basename($_FILES["fileToUpload"]["name"]);
     $identity = NULL;
     $erdeklodes = NULL;
 
@@ -103,7 +104,7 @@
     //CSONGOR: EDDIG
 
     if (count($hibak) === 0) {   // sikeres regisztráció
-      $fiokok[] = ["nickname" => $nickname, "password" => $password, "name" => $name, "identity" => $identity, "erdeklodes" => $erdeklodes, "fileToUpload" => $foto];
+      $fiokok[] = ["nickname" => $nickname, "password" => $password, "name" => $name, "identity" => $identity, "erdeklodes" => $erdeklodes, "fotonev" => $fotonev];
       saveUsers("users.txt", $fiokok);
       $siker = TRUE;
       header("Location: signin.php");

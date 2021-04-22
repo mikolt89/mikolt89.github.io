@@ -381,6 +381,11 @@ table.Toplistatabla tfoot .links a {
 .forgat:hover {
 	transform: rotate( -10deg);
 }
+.profilkep{
+	height: 450px;
+	width: 450px ;
+	float: right;
+}
 /* REGISZTRÁCIÓ OLDAL ELEMEI */
 
 #reg fieldset {

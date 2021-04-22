@@ -1,3 +1,2 @@
 a:5:{s:8:"nickname";s:5:"55555";s:8:"password";s:6:"555555";s:4:"name";s:5:"55555";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:7:"emberek";i:1;s:8:"twilekek";}}
 a:5:{s:8:"nickname";s:8:"mikolt89";s:8:"password";s:6:"111111";s:4:"name";s:19:"Csaba-Tóth Zsófia";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:7:"emberek";i:1;s:8:"twilekek";}}
-a:6:{s:8:"nickname";s:12:"VaderNagyúr";s:8:"password";s:9:"Starwars1";s:4:"name";s:17:"Vagyok Aki Vagyok";s:8:"identity";s:1:"K";s:10:"erdeklodes";a:4:{i:0;s:7:"emberek";i:1;s:8:"twilekek";i:2;s:10:"dathomirik";i:3;s:8:"gunganok";}s:12:"fileToUpload";a:5:{s:4:"name";s:10:"ozNC1l.jpg";s:4:"type";s:10:"image/jpeg";s:8:"tmp_name";s:24:"C:\xampp\tmp\phpB793.tmp";s:5:"error";i:0;s:4:"size";i:143205;}}
