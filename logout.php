@@ -4,5 +4,5 @@
 	session_unset();						// munkamenet-változók kiürítése
 	session_destroy();						// munkamenet törlése
 
-	header("Location: login.php");			// átirányítás a login.php oldalra
+	header("Location: signin.php");			// átirányítás a login.php oldalra
 ?>

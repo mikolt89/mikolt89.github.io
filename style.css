@@ -385,6 +385,7 @@ table.Toplistatabla tfoot .links a {
 
 #reg fieldset {
 	width: 50%;
+	height: auto;
 	margin: 2%;
 	display: block;
 	margin-left: auto;

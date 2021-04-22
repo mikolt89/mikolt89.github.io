@@ -1,108 +1,63 @@
 <?php
-session_start();
-include_once "footer.php";
-//include_once "signup.php";
-include_once "functions.php";
-// CSONGOR - Innentol indul a vizsgalat, hiba eseten die alapjan szerepel minden egészen...
-/*if(isset($_POST["regiszto"])){
-    if(!isset($_POST["name"]) || !isset($_POST["nickname"]) || !isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["passwordcheck"])){
-        die("<strong>HIBA:</strong> Nincs minden kötelező mező kitöltve! <a href='regiszto.php'Vissza a Regisztrációhoz</a>");
-    }
-    if(strlen($_POST["nickname"])<5){
-        die("<strong>HIBA: </strong> A felhasználónévnek legalább 5 karakter hosszúnak kell lennie! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
+  session_start();
+  include "functions.php";
+  include_once "footer.php";
+  $fiokok = loadUsers("users.txt");
 
-    }
-    if(strlen($_POST["password"])<8){
-        die("<strong>HIBA: </strong> A jelszónak legalább 8 karakter hosszúnak kell lennie! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-    }
-    for ($i=0;$i<count($_SESSION["registeredUsers"]);$i++){
-        if($_SESSION["registeredUsers"][$i]->getNickname() == $_POST["nickname"]){
-            $unamereserved=true;
-        }
-    }
-    if($unamereserved){
-        die("<strong>HIBA: </strong> A felhasználónév ebben a galaxisban már foglalt! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-    }else{
-        if(isset($_FILES["profilkep"])){
-            $kiterjesztesek=["jpg" , "png"];
-            $kepkiterjesztes = strtolower(pathinfo($_FILES["profilkep"]["name"], PATHINFO_EXTENSION));
-            if(in_array($kepkiterjesztes,$kiterjesztesek)){
-                if($_FILES["profilkep"]["error"]===0){
-                    if($_FILES["profilkep"]["size"]<=31456280){
-                        $cel = "profil/".$_POST["nickname"].".".$kepkiterjesztes;
-                    }if(move_uploaded_file($_FILES["profilkep"]["tmp_name"],$cel)){
-                        $message.="Sikeres feltöltés!";
-                    } else{
-                        die("<strong>HIBA: </strong> Sikertelen képátmozgatás! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-                    }
-                }else{
-                    die("<strong>HIBA: </strong> A kép mérete túl nagy! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-                }
-            }else{
-                die("<strong>HIBA: </strong> A fájlfeltöltés során hiba lépett fel. <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-            }
-        }else{
-            die("<strong>HIBA: </strong> Nem megfelelő a feltöltött fájl kiterjesztése! Válassz csak .jpg és .png fájlt! <a href='regiszto.php'>Vissza a Regisztrációhoz</a>");
-        }
-    }
-    $uj = new User($_POST["name"],$_POST["nickname"],$_POST["email"],$_POST["password"],$_POST["passwordcheck"],$_POST["nickname"].".".$kepkiterjesztes);
-    array_push($_SESSION["registeredUsers"],$uj);
-    $uj->savetxt();
-    $message.="Sikeres Regisztráció!";
-}*/
-//eddig a pontig. Nem működik rendesen még mindig. /CSONGOR
-//9.gyakanyagból
-$fiokok = loadUsers("users.txt");
+  $hibak = [];
 
-    $errors = [];
-    $siker;
+  // űrlapfeldolgozás
 
-    if (isset($_POST["reg"])) { 
-    /*if (!isset($_POST["name"]) || trim($_POST["name"]) === "")
-      $errors[] = "A név megadása kötelező!";
+  if (isset($_POST["regiszt"])) { 
     if (!isset($_POST["nickname"]) || trim($_POST["nickname"]) === "")
-      $errors[] = "A felhasználónév megadása kötelező!";
-    if (!isset($_POST["email"]) || trim($_POST["email"]) === "")
-      $errors[] = "Az e-mail megadása kötelező!";
-    if (!isset($_POST["password"]) || trim($_POST["password"]) === "" || !isset($_POST["passwordcheck"]) || trim($_POST["passwordcheck"]) === "")
-      $errors[] = "A jelszó és az ellenőrző jelszó megadása kötelező!";*/
+      $hibak[] = "A felhasználónév megadása kötelező!";
 
-    $name = $_POST["name"]; //itt szerintem majd a settereket kell használni, de egyelőre nem mertem lecserélni
+    if (!isset($_POST["password"]) || trim($_POST["password"]) === "" || !isset($_POST["password2"]) || trim($_POST["password2"]) === "")
+      $hibak[] = "A jelszó és az ellenőrző jelszó megadása kötelező!";
+
+    if (!isset($_POST["name"]) || trim($_POST["name"]) === "")
+      $hibak[] = "Az életkor megadása kötelező!";
+
+    if (!isset($_POST["identity"]) || trim($_POST["identity"]) === "")
+      $hibak[] = "A identitás megadása kötelező!";
+
+    if (!isset($_POST["erdeklodes"]) || count($_POST["erdeklodes"]) < 2)
+      $hibak[] = "Legalább 2 hobbit kötelező kiválasztani!";
+
     $nickname = $_POST["nickname"];
-    $email = $_POST["email"];
     $password = $_POST["password"];
-    $passwordcheck = $_POST["passwordcheck"];
-    
-    /* EZ NEKÜNK EGYELŐRE NEM KELL
-    $nem = NULL;
-    $hobbik = NULL;
+    $password2 = $_POST["password2"];
+    $name = $_POST["name"];
+    $identity = NULL;
+    $erdeklodes = NULL;
 
-    if (isset($_POST["nem"]))
-      $nem = $_POST["nem"];
-    if (isset($_POST["hobbik"]))
-      $hobbik = $_POST["hobbik"];*/
+    if (isset($_POST["identity"]))
+      $identity = $_POST["identity"];
+    if (isset($_POST["erdeklodes"]))
+      $erdeklodes = $_POST["erdeklodes"];
 
-    
-    /*foreach ($fiokok as $fiok) {
+    foreach ($fiokok as $fiok) {
       if ($fiok["nickname"] === $nickname)
-        $errors[] = "A felhasználónév már foglalt!";
+        $hibak[] = "A felhasználónév már foglalt!";
     }
 
     if (strlen($password) < 6)
-      $errors[] = "A jelszónak legalább 6 karakter hosszúnak kell lennie!";
+      $hibak[] = "A jelszónak legalább 6 karakter hosszúnak kell lennie!";
 
-    if ($password !== $passwordcheck)
-      $errors[] = "A jelszó és az ellenőrző jelszó nem egyezik!";*/
+    if ($password !== $password2)
+      $hibak[] = "A jelszó és az ellenőrző jelszó nem egyezik!";
 
-//    if (count($errors) === 0) {
-      //$fiokok[] = ["name" => $name, "nickname" => $nickname,"email" => $email,"password" => $password, "passwordcheck" => $passwordcheck];
-      $fiokok = array("name" => "name", "nickname" => "nickname","email" => "email","password" => "password", "passwordcheck" => "passwordcheck");
+    if (strlen($name) < 5)
+      $hibak[] = "Legalább 5 betűből kell álljon a neved!";
+
+    if (count($hibak) === 0) {   // sikeres regisztráció
+      $fiokok[] = ["nickname" => $nickname, "password" => $password, "name" => $name, "identity" => $identity, "erdeklodes" => $erdeklodes];
       saveUsers("users.txt", $fiokok);
-//      $siker = TRUE;
-      //header("Location: login.php");
-//    } else {
-//      $siker = FALSE;
-//    }
+      $siker = TRUE;
+      header("Location: signin.php");
+    } else {                    // sikertelen regisztráció
+      $siker = FALSE;
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -118,14 +73,25 @@ $fiokok = loadUsers("users.txt");
 <body>
 <div id="banner-content"><img alt="Regisztráció" src="./img/reg.png"></div>
 <div class="menusor" id="lpMenusor">
-    <a href="./index.php">Kezdőlap</a> <a class="active" href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
+    <a href="./index.php">Kezdőlap</a>
+    <a href="./toplista.php">Toplista</a>
+    <?php if (isset($_SESSION["user"])) { ?>
+            <a class="active" href="profile.php">Profilom</a>
+            <a href="logout.php">Kijelentkezés</a></li>
+      <?php } else { ?>
+            <a href="signin.php">Bejelentkezés</a></li>
+            <a class="active"href="regisztracio.php">Regisztráció</a></li>
+      <?php } ?>
+    
+    <a href="./oldalterkep.php">Oldaltérkép</a>
+    <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
     <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
     <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a>
     <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a>
     <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a>
-    <form method="POST">
+    <!--<form method="POST">
         <fieldset>
             <p class="alpont">Belépés:</p>
             <label for="nicknamein">Felhasználónév:<br/>
@@ -137,12 +103,12 @@ $fiokok = loadUsers("users.txt");
             <br/>
             <input id="submit_sidenav" name="kuld" type="submit">
         </fieldset>
-    </form>
+    </form>-->
     <br/>
     <iframe class="yt" src="https://www.youtube.com/embed/D-Sv6fu-udU" title="YouTube video player"></iframe>
     <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
-        
-    <form method="POST">
+      <?php if (isset($_SESSION["user"])) { ?>
+        <form method="POST">
         <fieldset>
             <p class="alpont">Értékelje oldalunkat!</p><br/>
             <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
@@ -165,237 +131,53 @@ $fiokok = loadUsers("users.txt");
         <br/>
             <input id="submit_sidenav" name="kuld" type="submit">
         </fieldset>
-    </form><audio autoplay="" controls=""><source src="audio/hirlevel.mp3" type="audio/mpeg">
+          <?php } ?>    
+    <audio autoplay="" controls=""><source src="audio/hirlevel.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
     <audio autoplay="" controls="" loop=""><source src="./audio/kotor2izizcantina.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
 </aside><br/>
 <br/>
 <br/>
-<?php //CSONGOR - ezzel teszteltem, hogy végigmegy-e a Regisztráció vagy sem. Ha igen, kiírja fent, ha nem, akkor nem...
-//if($message != "") echo "<p>.$message.</p>" ?>
-<form id="reg" method="POST" action="regisztracio.php" name="reg" enctype="multipart/form-data">
-    <!-- CSONGOR - Ez a rész akadályozza meg, hogy JS-t lehessen írni a mezőkbe, vagyis hackelgetni lehessen az oldalt -->
-    <?php
-
-foreach($fiokok as $x => $x_value) {
-    echo "Key=" . $x . ", Value=" . $x_value;
-}
-          if (isset($siker) && $siker === TRUE) { 
+<form id="reg" action="regisztracio.php" method="POST">
+<fieldset>
+        <legend>Regisztráció:</legend>
+        <?php
+          if (isset($siker) && $siker === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
             echo "<p>Sikeres regisztráció!</p>";
-          } else {                                
-            foreach ($errors as $error) {
-              echo "<p>" . $error . "</p>";
+          } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
+            foreach ($hibak as $hiba) {
+              echo "<p>" . $hiba . "</p>";
             }
           }
         ?>
-        
-    <fieldset>
-        <legend>Regisztráció:</legend>
-        <label for="name">Mondd meg, mi a neved!<br/>
-            <input required name="name" id="name" placeholder="Név..." type="text" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" >
-        </label>
-        <br/><br/>
-        <label for="nickname">Válassz egy felhasználónevet!<br/>
-            <input required name="nickname" id="nickname" placeholder="felhasználónév..." type="text" ></label>
-        <br/>
-        <br/>        
-        <label for="email">Írd meg a galaktikus e-mail címed!<br/>
-            <input required name="email" id="email" placeholder="galaktikusmailem@tantiveiv.ald..." type="text" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"></label>
-        <br/>
-        <br/>
-        <label for="password">Állíts be egy erős jelszót!<br/>
-            <input required name="password" id="password" placeholder="cH9wb#ccĐ" type="password"></label>
-        <br/>
-        <br/>
-        <label for="passwordcheck">Írd be újra a jelszót!<br/>
-            <input required name="passwordcheck" id="passwordcheck" placeholder="cH9wb#ccĐ" type="password"></label>
-        <br/>
-        <br/>       
-        <label for="imgToUpload">Tölts fel egy képet magadról!<br/>
-            <input type="file" name="imgToUpload" id="imgToUpload" action="upload.php" method="post" accept="image/*"><br/>
-        <br/>
-        <br/>
-        <label for="keres">Mit keresel?<br/></label> <select id="keres" name="keres">
-            <option value="orok szerelem"> Örök szerelem </option>
-            <option value="testi kapcsolat"> Testi Kapcsolat </option>
-            <option value="szentgral"> Szent Grál </option>
-            </select><br/>
-        <br/>
-        <label for="szin">Mi a kedvenc színed?<br/></label>
-        <br/>
-        <input type="color" id="szin" name="szin"
-            value="#1e90ff">
-        <br/>
-        <br/>
-        <label for="faj">Faj:<br/></label> <select id="faj" name="faj">
-        <option value="aiwha">
-            Aiwha
-        </option>
-        <option value="aleena">
-            Aleena
-        </option>
-        <option value="anx">
-            Anx
-        </option>
-        <option value="balosar">
-            Balosar
-        </option>
-        <option value="besalisk ">
-            Besalisk
-        </option>
-        <option value="cereai">
-            Cereai
-        </option>
-        <option value="chagrian">
-            Chagrian
-        </option>
-        <option value="dathomiri_zabrak">
-            Dathomiri zabrak
-        </option>
-        <option value="devlikk">
-            Devlikk
-        </option>
-        <option value="dressellian">
-            Dressellian
-        </option>
-        <option value="dug">
-            Dug
-        </option>
-        <option value="gran">
-            Ember
-        </option>
-        <option value="gran">
-            Gran
-        </option>
-        <option value="gungan">
-            Gungan
-        </option>
-        <option value="iktotchi">
-            Iktotchi
-        </option>
-        <option value="klatooinian">
-            Klatooinian
-        </option>
-        <option value="muun">
-            Muun
-        </option>
-        <option value="nautolani">
-            Nautolani
-        </option>
-        <option value="seloniai">
-            Seloniai
-        </option>
-        <option value="togruta">
-            Togruta
-        </option>
-        <option value="toydari">
-            Toydari
-        </option>
-        <option value="twilek">
-            Twi&apos;lek
-        </option>
-    </select><br/>
-    <br/>
-        <label for="lakhely">Bolygó:<br/></label> <select id="lakhely" name="lakhely">
-        <option value="alderaan">
-            Alderaan
-        </option>
-        <option value="ambria">
-            Ambria
-        </option>
-        <option value="apatros">
-            Apatros
-        </option>
-        <option value="balosar">
-            Balosar
-        </option>
-        <option value="bespin ">
-            Bespin
-        </option>
-        <option value="byss">
-            Byss
-        </option>
-        <option value="christophsis">
-            Christophsis
-        </option>
-        <option value="coruscant">
-            Coruscant
-        </option>
-        <option value="dagobah ">
-            Dagobah
-        </option>
-        <option value="dantooine">
-            Dantooine
-        </option>
-        <option value="endor">
-            Endor
-        </option>
-        <option value="felucia">
-            Felucia
-        </option>
-        <option value="geonosis">
-            Geonosis
-        </option>
-        <option value="hoth">
-            Hoth
-        </option>
-        <option value="illum">
-            Illum
-        </option>
-        <option value="kamino">
-            Kamino
-        </option>
-        <option value="kashyyyk">
-            Kashyyyk
-        </option>
-        <option value="naboo">
-            Naboo
-        </option>
-        <option value="tatooine">
-            Tatooine
-        </option>
-    </select><br/>
-    <br/>
-        <label>Identitás:</label><br/>
-        <input id="birodalmi" name="birodalmi" type="radio" value="birodalmi"> <label for="birodalmi">Birodalmi</label><br/>
-        <input id="koztarsasagi" name="koztarsasagi" type="radio" value="koztarsasagi"> <label for="koztarsasagi">Köztársasági</label><br/>
-        <br/>
-        <br/>
-        <label>Érdeklődés:</label><br/>
-        <br/>
-        <input id="aiwha" name="aiwha" type="checkbox" value="Aiwha"> <label for="aiwha">Aiwha</label><br/>
-        <input id="aleena" name="aleena" type="checkbox" value="Aleena"> <label for="aleena">Aleena</label><br/>
-        <input id="anx" name="anx" type="checkbox"> <label for="anx">Anx</label><br/>
-        <input id="balosar" name="balosar" type="checkbox"> <label for="balosar">Balosar</label><br/>
-        <input id="besalisk" name="besalisk" type="checkbox"> <label for="besalisk">Besalisk</label><br/>
-        <input id="cereai" name="cereai" type="checkbox" value="Cereai"> <label for="cereai">Cereai</label><br/>
-        <input id="chagrian" name="chagrian" type="checkbox"> <label for="chagrian">Chagrian</label><br/>
-        <input id="dathomiri_zabrak" name="dathomiri_zabrak" type="checkbox"> <label for="dathomiri_zabrak">Dathomiri zabrak</label><br/>
-        <input id="devlikk" name="devlikk" type="checkbox"> <label for="devlikk">Devlikk</label><br/>
-        <input id="dressellian" name="dressellian" type="checkbox"> <label for="dressellian">Dressellian</label><br/>
-        <input id="dug" name="dug" type="checkbox"> <label for="dug">Dug</label><br/>
-        <input id="ember" name="ember" type="checkbox"> <label for="ember">Ember</label><br/>
-        <input id="gran" name="gran" type="checkbox"> <label for="gran">Gran</label><br/>
-        <input id="gungan" name="gungan" type="checkbox"> <label for="gungan">Gungan</label><br/>
-        <input id="iktotchi" name="iktotchi" type="checkbox"> <label for="iktotchi">Iktotchi</label><br/>
-        <input id="klatooinian" name="klatooinian" type="checkbox"> <label for="klatooinian">Klatooinian</label><br/>
-        <input id="muun" name="muun" type="checkbox" value="Muun"> <label for="muun">Muun</label><br/>
-        <input id="nautolani" name="nautolani" type="checkbox"> <label for="nautolani">Nautolani</label><br/>
-        <input id="seloniai" name="seloniai" type="checkbox"> <label for="seloniai">Seloniai</label><br/>
-        <input id="togruta" name="togruta" type="checkbox"> <label for="togruta">Togruta</label><br/>
-        <input id="toydari" name="toydari" type="checkbox"> <label for="toydari">Toydari</label><br/>
-        <input id="twilek" name="twilek" type="checkbox" value="Twi&apos;lek"> <label for="twilek">Twi&apos;lek</label><br/>
-        <br/>
+          <label>Válassz felhasználónevet:<br/>
+           <input type="text" name="nickname" value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>"/></label> <br/>
+          <label>Állíts be egy erős jelszót!<br/>
+           <input type="password" name="password"/></label> <br/>
+          <label>Írd be újra a jelszót!<br/>
+           <input type="password" name="password2"/></label> <br/>
+          <label>Add meg a neved:<br/>
+           <input type="text" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"/></label> <br/><br/>
+          Identitás:<br/>
+          <label><input type="radio" name="identity" value="B" <?php if (isset($_POST['identity']) && $_POST['identity'] === 'B') echo 'checked'; ?>/> Birodalmi</label>
+          <label><input type="radio" name="identity" value="K" <?php if (isset($_POST['identity']) && $_POST['identity'] === 'K') echo 'checked'; ?>/> Köztársasági</label>
+          <label><input type="radio" name="identity" value="L" <?php if (isset($_POST['identity']) && $_POST['identity'] === 'L') echo 'checked'; ?>/> Lázadó</label> <br/><br/>
+          Érdeklődés:<br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="emberek" <?php if (isset($_POST['erdeklodes']) && in_array('emberek', $_POST['erdeklodes'])) echo 'checked'; ?>/> Emberek</label><br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="twilekek" <?php if (isset($_POST['erdeklodes']) && in_array('twilekek', $_POST['erdeklodes'])) echo 'checked'; ?>/> Twi&apos;lekek</label><br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="dathomirik" <?php if (isset($_POST['erdeklodes']) && in_array('dathomirik', $_POST['erdeklodes'])) echo 'checked'; ?>/> Dathomirik</label><br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="gunganok" <?php if (isset($_POST['erdeklodes']) && in_array('gunganok', $_POST['erdeklodes'])) echo 'checked'; ?>/> Gunganok</label><br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="mindenmas" <?php if (isset($_POST['erdeklodes']) && in_array('mindenmas', $_POST['erdeklodes'])) echo 'checked'; ?>/> Minden más</label> <br/>
+          
+          <br/>
         <label for="hozzajarulas"></label><br/>
         <input required id="hozzajarulas" name="hozzajarulas" type="checkbox"> <label for="hozzajarulas">Elolvastam az <a href="files/Adatv%C3%A9delmi%20ir%C3%A1nyelvek.pdf" target="_blank">adatvédelmi irányelveket</a>, hozzájárulok adataim tárolásához.</label><br/>
-        <br/>
-        <label for="hirlevel"></label><br/>
-        <input id="hirlevel" name="hirlevel" type="checkbox"> <label for="hirlevel">Kérem a személyre szabott tippeket a randizáshoz, és a nekem ajánlott entitásokat!</label><br/>
-        <br/>
-        <input type="submit" value="Regisztráció"> <input type="reset">
-    </fieldset>
-</form><br/>
+        <br/><br/>
+
+          <input type="submit" name="regiszt"/> <br/><br/>
+        </form>
+      </fieldset>
 <div id="home">
     <a href="#banner-content"><img alt="Lap tetejére" class="home" src="img/li_icon.gif" title="Lap tetejére"></a>
 </div>

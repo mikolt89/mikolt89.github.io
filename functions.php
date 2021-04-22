@@ -16,7 +16,7 @@
   }
 
   function saveUsers($path, $users) {
-    $file = fopen($path, "a");
+    $file = fopen($path, "w");
     if ($file === FALSE)
       die("HIBA: Nem sikerüt a fájl megnyitása!");
 

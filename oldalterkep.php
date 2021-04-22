@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "footer.php";
 ?>
 <!DOCTYPE html>
@@ -14,10 +15,20 @@ include_once "footer.php";
 <body>
 <div id="banner-content">
     <img src="./img/oldmap.png" alt="Oldaltérkép">
+    <div class="menusor" id="lpMenusor">
+    <a href="./index.php">Kezdőlap</a>
+    <a  href="./toplista.php">Toplista</a>
+    <?php if (isset($_SESSION["user"])) { ?>
+            <a  href="profile.php">Profilom</a>
+            <a href="logout.php">Kijelentkezés</a></li>
+      <?php } else { ?>
+            <a href="signin.php">Bejelentkezés</a></li>
+            <a href="regisztracio.php">Regisztráció</a></li>
+      <?php } ?>
+    
+    <a class="active" href="./oldalterkep.php">Oldaltérkép</a>
+    <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
-  <div class="menusor" id="lpMenusor">
-  <a href="./index.php">Kezdőlap</a> <a href="./regisztracio.php">Regisztráció</a> <a href="./toplista.php">Toplista</a> <a class="active" href="./oldalterkep.php">Oldaltérkép</a> <a href="./kapcsolat.php">Kapcsolat</a>
-  </div>
 <aside class="sidenav">
   <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img src="img/fb.png" class="socmedia" alt="facebook-icon"></a>
   <a href="https://www.instagram.com/starwars/" target="_blank"><img src="img/insta.png" class="socmedia" alt="instagram-icon"></a>
@@ -25,22 +36,31 @@ include_once "footer.php";
   <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img src="img/tiktok.png" class="socmedia" alt="tiktok-icon"></a>
   <iframe class="yt" src="https://www.youtube.com/embed/eRlKUj0c5sY" title="YouTube video player"></iframe>
     <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
-    <form method="post">
-			<fieldset>
-				<p class="alpont">Értékelje oldalunkat!</p><br/>
-					<input class="range_input" type="range" value="0" min="0" max="4" step="1" list="number" />
-						<datalist class="range_list" id="number">
-							<option class="range_opt opt0">1</option>
-							<option class="range_opt">2</option>
-							<option class="range_opt">3</option>
-							<option class="range_opt">4</option>
-							<option class="range_opt">5</option>
-					</datalist>
+      <?php if (isset($_SESSION["user"])) { ?>
+        <form method="POST">
+        <fieldset>
+            <p class="alpont">Értékelje oldalunkat!</p><br/>
+            <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
+            <option class="range_opt opt0">
+                1
+            </option>
+            <option class="range_opt">
+                2
+            </option>
+            <option class="range_opt">
+                3
+            </option>
+            <option class="range_opt">
+                4
+            </option>
+            <option class="range_opt">
+                5
+            </option>
+        </datalist><br/>
         <br/>
-			<br/>
-			<input type="submit" name="kuld" id="ertekeles">
-			</fieldset>
-		  </form>
+            <input id="submit_sidenav" name="kuld" type="submit">
+        </fieldset>
+          <?php } ?>  
       <audio controls autoplay >
         <source src="audio/oldalterkep.mp3" type="audio/mpeg">
       <p>Böngészője nem támogatja az audio elemet.</p>
