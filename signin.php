@@ -36,6 +36,7 @@
     <link href="./mquery.css" rel="stylesheet">
 </head>
 <body>
+<div id="banner-content"><img alt="Bejelentkezés" src="./img/bej.jpg"></div>
 <div class="menusor" id="lpMenusor">
     <a href="./index.php">Kezdőlap</a>
     <a href="./toplista.php">Toplista</a>

@@ -73,6 +73,7 @@
         <legend>Profilom:</legend>
                 <?php
         	echo "<ul>";
+        	 // echo "<li>'<img src="/uploads/"'. $_SESSION["user"]["foto"] .' alt="profilkép" width="280"</li>";
 		      echo "<li>Felhasználónév: " . $_SESSION["user"]["nickname"] . "</li>";
 		      echo "<li>Név: " . $_SESSION["user"]["name"] . "</li>";
 		      echo "<li>Identitás: " . identity($_SESSION["user"]["identity"]) . "</li>";
