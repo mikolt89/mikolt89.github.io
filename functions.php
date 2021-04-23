@@ -1,5 +1,4 @@
 <?php
-  //9.gyakanyagból
   function loadUsers($path) {
     $users = [];
     $file = fopen($path, "r");
@@ -26,5 +25,16 @@
     }
 
     fclose($file);
+  }
+  //hát ez nem igazán működik most így, mert ki kéne menteni az eddigi értékeléseket, és visszatölteni.
+  function rangeSite(){
+    $range=0;
+    $rangecount=0;
+    if(isset($_GET['range'])){
+      $newrange=$_GET['range'];
+      $rangecount++;
+      $range=($range+$newrange)/$rangecount;       
+  } 
+  return $range;
   }
 ?>

@@ -1,2 +1,1 @@
-a:5:{s:8:"nickname";s:5:"55555";s:8:"password";s:6:"555555";s:4:"name";s:5:"55555";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:7:"emberek";i:1;s:8:"twilekek";}}
-a:5:{s:8:"nickname";s:8:"mikolt89";s:8:"password";s:6:"111111";s:4:"name";s:19:"Csaba-Tóth Zsófia";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:7:"emberek";i:1;s:8:"twilekek";}}
+a:6:{s:8:"nickname";s:6:"888888";s:8:"password";s:6:"888888";s:4:"name";s:6:"888888";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:8:"twilekek";i:1;s:10:"dathomirik";}s:7:"fotonev";s:6:"zs.jpg";}

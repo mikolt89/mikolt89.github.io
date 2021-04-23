@@ -2,6 +2,7 @@
   session_start();
   include "functions.php";
   include_once "footer.php";
+  include_once "dateAndsocial.php";
   $fiokok = loadUsers("users.txt");
 
   $hibak = [];
@@ -129,8 +130,7 @@
     <a href="./index.php">Kezdőlap</a>
     <a href="./toplista.php">Toplista</a>
     <?php if (isset($_SESSION["user"])) { ?>
-            <a class="active" href="profile.php">Profilom</a>
-            <a href="logout.php">Kijelentkezés</a></li>
+            <a class="active" href="profile.php">Profilom</a></li>
       <?php } else { ?>
             <a href="signin.php">Bejelentkezés</a></li>
             <a class="active"href="regisztracio.php">Regisztráció</a></li>
@@ -140,51 +140,25 @@
     <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
-    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a>
-    <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a>
-    <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a>
-    <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a>
-    <!--<form method="POST">
-        <fieldset>
-            <p class="alpont">Belépés:</p>
-            <label for="nicknamein">Felhasználónév:<br/>
-                <input name="nicknamein" id="nicknamein" placeholder="felhasználónév..." type="text"> </label>
-                <br/><br/>
-            <label for="passwordin">Jelszó:<br/>
-                <input name="passwordin" id="passwordin" placeholder="cH9wb#ccĐ" type="password"> </label>
-            <br/>
-            <br/>
-            <input id="submit_sidenav" name="kuld" type="submit">
-        </fieldset>
-    </form>-->
-    <br/>
+<?php
+dateAndsocial();
+?><br/>
     <iframe class="yt" src="https://www.youtube.com/embed/D-Sv6fu-udU" title="YouTube video player"></iframe>
     <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
       <?php if (isset($_SESSION["user"])) { ?>
-        <form method="POST">
+      <form method="GET" action="regisztracio.php" name="range">
         <fieldset>
             <p class="alpont">Értékelje oldalunkat!</p><br/>
-            <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
-            <option class="range_opt opt0">
-                1
-            </option>
-            <option class="range_opt">
-                2
-            </option>
-            <option class="range_opt">
-                3
-            </option>
-            <option class="range_opt">
-                4
-            </option>
-            <option class="range_opt">
-                5
-            </option>
-        </datalist><br/>
-        <br/>
-            <input id="submit_sidenav" name="kuld" type="submit">
+            <input class="range_input" list="number" max="5" min="1" step="1" type="range" name="range" >
+            <input id="submit_sidenav" type="submit" value="Értékelem">
         </fieldset>
-          <?php } ?>    
+          <?php }  
+
+         if (isset($_GET['range'])) {
+          rangeSite();      
+          echo "<h4>Köszönjük értékelésed! ".rangeSite() ;
+        }
+    ?> 
     <audio autoplay="" controls=""><source src="audio/hirlevel.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
     <audio autoplay="" controls="" loop=""><source src="./audio/kotor2izizcantina.mp3" type="audio/mpeg">
@@ -196,16 +170,16 @@
 <fieldset>
         <legend>Regisztráció:</legend>
         <?php
-          if (isset($siker) && $siker === TRUE) {  // ha nem volt hiba, akkor a regisztráció sikeres
+          if (isset($siker) && $siker === TRUE) {  
             echo "<p>Sikeres regisztráció!</p>";
-          } else {                                // az esetleges hibákat kiírjuk egy-egy bekezdésben
+          } else {                                
             foreach ($hibak as $hiba) {
               echo "<p>" . $hiba . "</p>";
             }
           }
         ?>
     <br/>
-          <label>Válassz felhasználónevet:<br/>
+          <label>Válassz felhasználónevet!<br/>
            <input type="text" name="nickname" value="<?php if (isset($_POST['nickname'])) echo $_POST['nickname']; ?>"/></label> <br/>
           <label>Állíts be egy erős jelszót!<br/>
            <input type="password" name="password"/></label> <br/>
@@ -213,8 +187,8 @@
            <input type="password" name="password2"/></label> <br/>
           <label>Add meg a neved:<br/>
            <input type="text" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"/></label> <br/><br/>
-            <label>Tölts fel magadról egy csábitó fotót:<br/>
-                 <input type="file" name="fileToUpload" id="fileToUpload"/>
+            <label>Tölts fel magadról egy csábitó fotót!<br/>
+                 <input required type="file" name="fileToUpload" id="fileToUpload"/>
                 <br/><br/>
                <!--CSONGOR: feltöltés w3c alapján, de ezt a regisztrációra való kattintással akarom
                 helyettesíteni <input type="submit" value="Feltöltés" name="submit"> -->

@@ -1,12 +1,13 @@
 <?php
   session_start();
+  include "functions.php";
+  include_once "dateAndsocial.php";
   include_once "footer.php";
-  if (!isset($_SESSION["user"])) {
-  	// ha a felhasználó nincs belépve (azaz a "user" munkamenet-változó értéke nem került korábban beállításra), akkor a login.php-ra navigálunk
-  	header("Location: login.php");
+  if (!isset($_SESSION["user"])) {  	
+  	header("Location: signin.php");
   }
 
-  function identity($betujel) {		// egy segédfüggvény, amely visszaadja a betűjelnek megfelelő nemet
+  function identity($betujel) {
   	switch ($betujel) {
   		case "B" : return "birodalmi"; break;
   		case "K" : return "köztársasági"; break;
@@ -19,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="./img/Darth-Vader.ico" rel="icon">
-    <title>Toplista</title>
+    <title>Profil</title>
     <link href="./style.css" rel="stylesheet">
     <link href="./font.css" rel="stylesheet">
     <link href="./mquery.css" rel="stylesheet">
@@ -31,7 +32,7 @@
     <a href="./toplista.php">Toplista</a>
     <?php if (isset($_SESSION["user"])) { ?>
             <a class="active" href="profile.php">Profilom</a>
-            <a href="logout.php">Kijelentkezés</a></li>
+            </li>
       <?php } else { ?>
             <a href="signin.php">Bejelentkezés</a></li>
             <a href="regisztracio.php">Regisztráció</a></li>
@@ -41,33 +42,25 @@
     <a href="./kapcsolat.php">Kapcsolat</a>
 </div>
 <aside class="sidenav">
-    <a href="https://www.facebook.com/Star-Wars-Lovers-1810298222633396/" target="_blank"><img alt="facebook-icon" class="socmedia" src="img/fb.png"></a> <a href="https://www.instagram.com/starwars/" target="_blank"><img alt="instagram-icon" class="socmedia" src="img/insta.png"></a> <a href="https://twitter.com/starwars" target="_blank"><img alt="twitter-icon" class="socmedia" src="img/tw.png"></a> <a href="https://www.tiktok.com/@official_starwars" target="_blank"><img alt="tiktok-icon" class="socmedia" src="img/tiktok.png"></a><br/>
-    <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=250&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
-        <?php if (isset($_SESSION["user"])) { ?>
-        <form method="POST">
+  <?php
+  dateAndsocial();
+  ?>
+<iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=250&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
+    <?php if (isset($_SESSION["user"])) { ?>
+      <form method="GET" action="profile.php" name="range">
         <fieldset>
             <p class="alpont">Értékelje oldalunkat!</p><br/>
-            <input class="range_input" list="number" max="4" min="0" step="1" type="range" value="0"> <datalist class="range_list" id="number">
-            <option class="range_opt opt0">
-                1
-            </option>
-            <option class="range_opt">
-                2
-            </option>
-            <option class="range_opt">
-                3
-            </option>
-            <option class="range_opt">
-                4
-            </option>
-            <option class="range_opt">
-                5
-            </option>
-        </datalist><br/>
-        <br/>
-            <input id="submit_sidenav" name="kuld" type="submit">
+            <input class="range_input" list="number" max="5" min="1" step="1" type="range" name="range" >
+            <input id="submit_sidenav" type="submit" value="Értékelem">
         </fieldset>
-          <?php } ?>  
+          <?php }  
+
+         if (isset($_GET['range'])) {
+          rangeSite();      
+          echo "<br/><h4>Köszönjük értékelésed: ".rangeSite()."</h4>" ;
+        }
+    ?> 
+        
     
 </aside>
       <fieldset>
