@@ -1,1 +1,1 @@
-a:6:{s:8:"nickname";s:6:"888888";s:8:"password";s:6:"888888";s:4:"name";s:6:"888888";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:8:"twilekek";i:1;s:10:"dathomirik";}s:7:"fotonev";s:6:"zs.jpg";}
+a:6:{s:8:"nickname";s:13:"yourbestlover";s:8:"password";s:6:"987123";s:4:"name";s:8:"Katuunko";s:8:"identity";s:1:"B";s:10:"erdeklodes";a:2:{i:0;s:7:"emberek";i:1;s:11:"minden más";}s:7:"fotonev";s:12:"katuunko.jpg";}

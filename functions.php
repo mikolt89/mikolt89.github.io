@@ -27,14 +27,51 @@
     fclose($file);
   }
   //hát ez nem igazán működik most így, mert ki kéne menteni az eddigi értékeléseket, és visszatölteni.
+
+  function loadRange($path) {
+    $ranges = [];
+    $file = fopen($path, "r");
+    if ($file === FALSE)
+      die("HIBA: Nem sikerüt a fájl megnyitása!");
+
+    while (($line = fgets($file)) !== FALSE) {
+      $range = unserialize($line); 
+      $ranges[] = $range;
+    }
+
+    fclose($file);
+    return $ranges;
+  }
+
+  function saveRange($path, $ranges) {
+    $file = fopen($path, "w");
+    if ($file === FALSE)
+      die("HIBA: Nem sikerüt a fájl megnyitása!");
+
+    foreach($ranges as $range) {
+      $serialized_range = serialize($ranges);
+      fwrite($file, $serialized_range . "\n"); 
+    }
+
+    fclose($file);
+  }
+
   function rangeSite(){
-    $range=0;
-    $rangecount=0;
+    $ranges=loadRange("range.txt");    
+    $newrange=0;    
     if(isset($_GET['range'])){
-      $newrange=$_GET['range'];
-      $rangecount++;
-      $range=($range+$newrange)/$rangecount;       
+      $newrange=$_GET['range'];             
   } 
-  return $range;
+  array_push($ranges, $newrange);
+  $rangecount=count($ranges);
+  $sum=0;
+  foreach($ranges as $range){
+    $sum+=(int)$range;
+  }
+  $average=$sum/$rangecount;
+  saveRange("range.txt", $ranges);
+
+  echo "<h4>Felhasználóink értékelésének átlaga: ".$average;
+  
   }
 ?>

@@ -46,8 +46,7 @@ include "functions.php";
           <?php }  
 
          if (isset($_GET['range'])) {
-          rangeSite();      
-          echo "<br/><h4>Köszönjük értékelésed: ".rangeSite()."</h4>" ;
+          rangeSite();
         }
     ?> </form>
     <?php if (isset($_SESSION["user"])) { ?>

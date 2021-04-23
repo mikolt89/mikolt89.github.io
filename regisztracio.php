@@ -3,12 +3,11 @@
   include "functions.php";
   include_once "footer.php";
   include_once "dateAndsocial.php";
+
+
+// űrlapfeldolgozás
   $fiokok = loadUsers("users.txt");
-
   $hibak = [];
-
-  // űrlapfeldolgozás
-
   if (isset($_POST["regiszt"])) { 
     if (!isset($_POST["nickname"]) || trim($_POST["nickname"]) === "")
       $hibak[] = "❌ - A felhasználónév megadása kötelező! Valószínűleg nem lesz bonyolultabb a saját nevednél ebben a galaxisban.";
@@ -17,7 +16,7 @@
       $hibak[] = "❌ - A jelszó és az ellenőrző jelszó megadása kötelező! Természetesen a galaktikus közös nyelven!";
 
     if (!isset($_POST["name"]) || trim($_POST["name"]) === "")
-      $hibak[] = "❌ - Az életkor megadása kötelező! Amúgy sem érdekel senkit, Yoda mester is fiatalosan ugrál közel 900 évesen!";
+      $hibak[] = "❌ - A neved megadása kötelező!";
 
     if (!isset($_POST["identity"]) || trim($_POST["identity"]) === "")
       $hibak[] = "❌ - Az identitás megadása kötelező! Nyugi, nem küldünk rád fejvadászt, ha lázadó vagy! Ígérjük!";
@@ -50,9 +49,10 @@
     if ($password !== $password2)
       $hibak[] = "❌ - A jelszó és az ellenőrző jelszó nem egyezik! Hány szemed van neked?";
 
-    if (strlen($name) < 5)
+    if (strlen($name) < 5 && !preg_match("/^[a-zA-Z-' ]*$/",$name))
       $hibak[] = "❌ - Legalább 5 galaktikus közös nyelvi betűből kell álljon a neved! Nyugi, ha alapból rövidebb, pl. Durge, tedd mögé, hogy Pusztító! A csajok imádni fogják!";
 
+      
     //CSONGOR: KÉPFELTÖLTÉS ETTŐL
 
       $target_dir = "uploads/";
@@ -64,7 +64,7 @@
       if(isset($_POST["submit"])) {
           $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
           if($check !== false) {
-              $hibak[] = "✓ Hmmm...szemrevaló lény vagy! - " . $check["mime"] . ".";
+              //$hibak[] = "✓ Hmmm...szemrevaló lény vagy! - " . $check["mime"] . ".";
               $uploadOk = 1;
           } else {
               $hibak[] = "❌ - Próbálj meg inkább egy képet feltölteni!";
@@ -108,7 +108,7 @@
       $fiokok[] = ["nickname" => $nickname, "password" => $password, "name" => $name, "identity" => $identity, "erdeklodes" => $erdeklodes, "fotonev" => $fotonev];
       saveUsers("users.txt", $fiokok);
       $siker = TRUE;
-      header("Location: signin.php");
+      
     } else {                    // sikertelen regisztráció
       $siker = FALSE;
     }
@@ -155,23 +155,29 @@ dateAndsocial();
           <?php }  
 
          if (isset($_GET['range'])) {
-          rangeSite();      
-          echo "<h4>Köszönjük értékelésed! ".rangeSite() ;
+          rangeSite();
         }
     ?> 
-    <audio autoplay="" controls=""><source src="audio/hirlevel.mp3" type="audio/mpeg">
+    <?php if (isset($_SESSION["user"])) { ?>
+      <audio autoplay="" controls="" loop=""><source src="./audio/kotor2izizcantina.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
-    <audio autoplay="" controls="" loop=""><source src="./audio/kotor2izizcantina.mp3" type="audio/mpeg">
+      </audio>
+    <?php } else{ ?>
+      <audio autoplay="" controls=""><source src="audio/hirlevel.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
+        <?php } ?>
+    
+    
 </aside><br/>
 <br/>
 <br/>
 <form id="reg" action="regisztracio.php" method="POST" enctype="multipart/form-data">
 <fieldset>
         <legend>Regisztráció:</legend>
-        <?php
+        
+        <?php        
           if (isset($siker) && $siker === TRUE) {  
-            echo "<p>Sikeres regisztráció!</p>";
+            echo "<p>✓ Sikeres regisztráció! Hmmm...szemrevaló lény vagy! </p>";
           } else {                                
             foreach ($hibak as $hiba) {
               echo "<p>" . $hiba . "</p>";
@@ -188,7 +194,7 @@ dateAndsocial();
           <label>Add meg a neved:<br/>
            <input type="text" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>"/></label> <br/><br/>
             <label>Tölts fel magadról egy csábitó fotót!<br/>
-                 <input required type="file" name="fileToUpload" id="fileToUpload"/>
+                 <input type="file" name="fileToUpload" id="fileToUpload"/>
                 <br/><br/>
                <!--CSONGOR: feltöltés w3c alapján, de ezt a regisztrációra való kattintással akarom
                 helyettesíteni <input type="submit" value="Feltöltés" name="submit"> -->
@@ -203,7 +209,7 @@ dateAndsocial();
           <label><input type="checkbox" name="erdeklodes[]" value="twilekek" <?php if (isset($_POST['erdeklodes']) && in_array('twilekek', $_POST['erdeklodes'])) echo 'checked'; ?>/> Twi&apos;lekek</label><br/>
           <label><input type="checkbox" name="erdeklodes[]" value="dathomirik" <?php if (isset($_POST['erdeklodes']) && in_array('dathomirik', $_POST['erdeklodes'])) echo 'checked'; ?>/> Dathomirik</label><br/>
           <label><input type="checkbox" name="erdeklodes[]" value="gunganok" <?php if (isset($_POST['erdeklodes']) && in_array('gunganok', $_POST['erdeklodes'])) echo 'checked'; ?>/> Gunganok</label><br/>
-          <label><input type="checkbox" name="erdeklodes[]" value="mindenmas" <?php if (isset($_POST['erdeklodes']) && in_array('mindenmas', $_POST['erdeklodes'])) echo 'checked'; ?>/> Minden más</label> <br/>
+          <label><input type="checkbox" name="erdeklodes[]" value="minden más" <?php if (isset($_POST['erdeklodes']) && in_array('mindenmas', $_POST['erdeklodes'])) echo 'checked'; ?>/> Minden más</label> <br/>
           
           <br/>
         <label for="hozzajarulas"></label><br/>

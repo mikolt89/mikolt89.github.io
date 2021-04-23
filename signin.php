@@ -2,11 +2,21 @@
   session_start();
   include_once "dateAndsocial.php";
   include_once "footer.php";
-  include "functions.php";              
+  include "functions.php";
+  //sütik
+  $countAttempts = 1;                    // hányszor próbált regisztrálni
+  if (isset($_POST["kuld"])){
+  // ha már van egy, az eddigi próbálkozások számát tároló sütink, akkor betöltjük annak az értékét
+  if (isset($_COOKIE["attempts"])) {
+    $countAttempts = $_COOKIE["attempts"] + 1;  // az eddigi próbálkozások számát megnöveljük 1-gyel
+  }
+
+  // egy "attempts" nevű süti a látogatásszám tárolására, amelynek élettartama 5 perc
+  setcookie("attempts", $countAttempts, time() + (60*5), "/");}
+
+  
   $fiokok = loadUsers("users.txt"); 
-
   $uzenet = ""; 
-
   if (isset($_POST["kuld"])) {
     if (!isset($_POST["nickname"]) || trim($_POST["nickname"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
       $uzenet = "<strong>Hiba:</strong> Adj meg minden adatot!";
@@ -77,7 +87,13 @@
         <legend>Belépés:</legend>
           <label>Felhasználónév: <br/><input type="text" name="nickname" placeholder="felhasználónév..." /></label> <br/><br/>
           <label>Jelszó: <br/><input type="password" name="password" placeholder="******"/></label> <br/><br/>
-          <input type="submit" name="kuld"/> <br/><br/>
+          <?php //próbálkozások számának ellenőrzése
+            if ($countAttempts < 5) {
+              echo "<input type='submit' name='kuld'/> <br/><br/>";
+            }else{
+              echo "<h4> ❌ Elnézést! Ez az $countAttempts. sikertelen bejelentkezési próbálkozásod. Próbáld meg 5 perc múlva újra! </h4>";
+            }
+              ?>
         </form>
         <?php echo $uzenet . "<br/>"; ?>
         </fieldset>
