@@ -3,7 +3,7 @@
     $users = [];
     $file = fopen($path, "r");
     if ($file === FALSE)
-      die("HIBA: Nem sikerüt a fájl megnyitása!");
+      die("HIBA: Nem sikerült a fájl megnyitása!");
 
     while (($line = fgets($file)) !== FALSE) {
       $user = unserialize($line); 
@@ -17,7 +17,7 @@
   function saveUsers($path, $users) {
     $file = fopen($path, "w");
     if ($file === FALSE)
-      die("HIBA: Nem sikerüt a fájl megnyitása!");
+      die("HIBA: Nem sikerült a fájl megnyitása!");
 
     foreach($users as $user) {
       $serialized_user = serialize($user);
@@ -26,13 +26,12 @@
 
     fclose($file);
   }
-  //hát ez nem igazán működik most így, mert ki kéne menteni az eddigi értékeléseket, és visszatölteni.
 
   function loadRange($path) {
     $ranges = [];
     $file = fopen($path, "r");
     if ($file === FALSE)
-      die("HIBA: Nem sikerüt a fájl megnyitása!");
+      die("HIBA: Nem sikerült a fájl megnyitása!");
 
     while (($line = fgets($file)) !== FALSE) {
       $range = unserialize($line); 
@@ -46,7 +45,7 @@
   function saveRange($path, $ranges) {
     $file = fopen($path, "w");
     if ($file === FALSE)
-      die("HIBA: Nem sikerüt a fájl megnyitása!");
+      die("HIBA: Nem sikerült a fájl megnyitása!");
 
     foreach($ranges as $range) {
       $serialized_range = serialize($ranges);
