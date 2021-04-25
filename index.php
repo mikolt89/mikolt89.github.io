@@ -56,6 +56,7 @@ dateAndsocial();
         }
 		
     ?>
+      </form>
 	<br/>   
 	<audio autoplay="" controls=""><source src="audio/udvozoljuk.mp3" type="audio/mpeg">
 	<p>Böngészője nem támogatja az audio elemet.</p></audio><br/>

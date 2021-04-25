@@ -50,7 +50,7 @@ include "functions.php";
           rangeSite();
         }
     ?> 
-    
+      </form>
     <?php if (isset($_SESSION["user"])) { ?>
         <audio autoplay="" controls="" loop=""><source src="./audio/kotorjavyarscantina.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
@@ -71,10 +71,7 @@ include "functions.php";
     <p>Űrpostacímünk: Endor-rendszer, Halálcsillag (éppen aktuális) 1.</p>
 </main>
 <form id="visszajelzes" method="post" name="visszajelzes">
-    <p class="eloszo">Galaxisunk több milliárd magányos lélek otthona, mi pedig galaktikus standard nap mint nap azon fáradozunk, hogy a magányos ingoványból kiemeljük, megtisztítsuk és összehozzuk a megfáradt lelkeket. Mind emberek (vagy mások) vagyunk, emiatt pedig könnyen előfordulhat, hogy hibákat vétünk. Amennyiben oldalunk működésében hibát észlelsz vagy csupán köszönetet szeretnél mondani kitartó munkánkért, ne habozz tovább:</p><br/>
-    <textarea cols="50" maxlength="500" name="feedback" placeholder="Várjuk visszajelzésed (max. 500 karakter)!" rows="5"></textarea><br/>
-    <br/>
-    <input id="kuldes" type="submit">
+    <p class="eloszo">Galaxisunk több milliárd magányos lélek otthona, mi pedig galaktikus standard nap mint nap azon fáradozunk, hogy a magányos ingoványból kiemeljük, megtisztítsuk és összehozzuk a megfáradt lelkeket. Mind emberek (vagy mások) vagyunk, emiatt pedig könnyen előfordulhat, hogy hibákat vétünk. Amennyiben oldalunk működésében hibát észlelsz vagy csupán köszönetet szeretnél mondani kitartó munkánkért, ne habozz tovább!</p>
 </form><br/>
 <br/>
 <br/>

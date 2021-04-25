@@ -157,7 +157,8 @@ dateAndsocial();
          if (isset($_GET['range'])) {
           rangeSite();
         }
-    ?> 
+    ?>
+      </form>
     <?php if (isset($_SESSION["user"])) { ?>
       <audio autoplay="" controls="" loop=""><source src="./audio/kotor2izizcantina.mp3" type="audio/mpeg">
     <p>Böngészője nem támogatja az audio elemet.</p></audio>
