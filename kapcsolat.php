@@ -32,8 +32,7 @@ include "functions.php";
 <aside class="sidenav">
 <?php
   dateAndsocial();
-  ?><a href="#kapcsolat">Kapcsolat</a><br/>
-    <a href="#visszajelzes">Írj nekünk</a><br/>
+  ?><a href="#kapcsolat">Kapcsolat</a><br/>    
     <a href="#impresszum">Impresszum</a>
     <iframe class="yt" src="https://www.youtube.com/embed/0X9NFknjTRE" title="YouTube video player"></iframe>
     <iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=260&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>

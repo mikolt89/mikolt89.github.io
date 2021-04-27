@@ -27,56 +27,38 @@
     fclose($file);
   }
 
-  function loadRange($path) {
-    $ranges = [];
+  //Értékelés
+  function loadData($path) {
     $file = fopen($path, "r");
     if ($file === FALSE)
       die("HIBA: Nem sikerült a fájl megnyitása!");
-
-    while (($line = fgets($file)) !== FALSE) {
-      $range = unserialize($line); 
-      $ranges[] = $range;
-    }
+    $data = fgets($file);
 
     fclose($file);
-    return $ranges;
+    return $data;
   }
 
-  function saveRange($path, $ranges) {
+  function saveData($path, $data) {
     $file = fopen($path, "w");
     if ($file === FALSE)
       die("HIBA: Nem sikerült a fájl megnyitása!");
+    fwrite($file, $data);
 
-    foreach($ranges as $range) {
-      $serialized_range = serialize($ranges);
-      fwrite($file, $serialized_range . "\n"); 
-    }
-
-    fclose($file);
+    fclose($file);   
   }
 
   function rangeSite(){
-    $ranges=loadRange("range.txt");
-    //$ranges=[];
-    //$rangesum=0;
-    //$rangecount=0;
-    $rangesum=(int)$ranges[0];
-    $rangecount=(int)$ranges[1];
-    //array_push($ranges, $rangesum, $rangecount);
-    if (isset($_GET['range'])) {
-      $rangecount=$rangecount+1;    
-      $rangesum= $rangesum+$_GET['range'];             
+    $rangesum=loadData("sum.txt");
+    $rangecount=loadData("count.txt");
+        if (isset($_GET['range'])) {
+      $rangecount++;    
+      $rangesum+=$_GET['range'];
+      $average=$rangesum/$rangecount;             
   }   
-  $average=$rangesum/$rangecount;
-  echo "<h4>Felhasználóink értékelésének átlaga: ".((float)((int)($average*10))/10).";".$rangesum.";".$rangecount;
-
-  $ranges=[];
-  array_push($ranges, $rangesum, $rangecount);
   
-
-  saveRange("range.txt", $ranges);
-
-  
-  
+  echo "<h4>Felhasználóink értékelésének átlaga: ".((float)((int)($average*10))/10);
+  saveData("sum.txt", $rangesum);
+  saveData("count.txt", $rangecount);
+   
   }
 ?>
