@@ -56,21 +56,27 @@
   }
 
   function rangeSite(){
-    $ranges=loadRange("range.txt");    
-    $newrange=0;    
-    if(isset($_GET['range'])){
-      $newrange=$_GET['range'];             
-  } 
-  array_push($ranges, $newrange);
-  $rangecount=count($ranges);
-  $sum=0;
-  foreach($ranges as $range){
-    $sum+=(int)$range;
-  }
-  $average=$sum/$rangecount;
+    $ranges=loadRange("range.txt");
+    //$ranges=[];
+    //$rangesum=0;
+    //$rangecount=0;
+    $rangesum=(int)$ranges[0];
+    $rangecount=(int)$ranges[1];
+    //array_push($ranges, $rangesum, $rangecount);
+    if (isset($_GET['range'])) {
+      $rangecount=$rangecount+1;    
+      $rangesum= $rangesum+$_GET['range'];             
+  }   
+  $average=$rangesum/$rangecount;
+  echo "<h4>Felhasználóink értékelésének átlaga: ".((float)((int)($average*10))/10).";".$rangesum.";".$rangecount;
+
+  $ranges=[];
+  array_push($ranges, $rangesum, $rangecount);
+  
+
   saveRange("range.txt", $ranges);
 
-  echo "<h4>Felhasználóink értékelésének átlaga: ".$average;
+  
   
   }
 ?>

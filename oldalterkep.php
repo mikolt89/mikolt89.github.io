@@ -75,8 +75,13 @@ include_once "footer.php";
         <li class="alpont"><a href="toplista.php#top3">A top három legvonzóbb entitás</a> </li>
         <li class="alpont"><a href="toplista.php#top4-6">A következő három legvonzóbb entitás</a> </li>
         <li class="alpont"><a href="toplista.php#futottak">Futottak még kategória</a></li>
+        
+      <?php if (isset($_SESSION["user"])) { ?>
+        <li class="oldalterkep"><a href="./profile.php">Profil</a></li>
+    <?php } else{ ?>
       <li class="oldalterkep"><a href="./signin.php">Bejelentkezés</a></li>
-      <li class="oldalterkep"><a href="./regisztracio.php">Regisztráció</a></li>
+          <li class="oldalterkep"><a href="./regisztracio.php">Regisztráció</a>
+        <?php } ?>
       <li class="oldalterkep"><a href="./oldalterkep.php">Oldaltérkép</a></li>
       <li class="oldalterkep"><a href="./kapcsolat.php">Kapcsolat</a></li>
         <li class="alpont"><a href="kapcsolat.php#kapcsolat">Vedd fel velünk a kapcsolatot</a> </li>

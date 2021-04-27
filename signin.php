@@ -29,8 +29,7 @@
       foreach ($fiokok as $fiok) {
         if ($fiok["nickname"] === $nickname && $fiok["password"] === $password) { 
           $uzenet = "Sikeres belépés!";
-          $_SESSION["user"] = $fiok;           
-          header("Location: toplista.php");       
+          $_SESSION["user"] = $fiok;
         }
       }
     }
@@ -73,8 +72,7 @@
         </fieldset>
           <?php }  
 
-         if (isset($_GET['range'])) {
-          rangeSite();      
+         if (isset($_GET['range'])) {              
           echo "<h4>Köszönjük értékelésed! ".rangeSite() ;
         }
     ?> 
@@ -85,7 +83,10 @@
 <form action="signin.php" method="POST">
         <fieldset>
         <legend>Belépés:</legend>
-          <label>Felhasználónév: <br/><input type="text" name="nickname" placeholder="felhasználónév..." /></label> <br/><br/>
+        <?php if (isset($_SESSION["user"])) {
+          echo $uzenet . "<br/>";
+          echo "<div> Belépve ".$_SESSION["user"]["nickname"] ." néven </div>";
+    } else{ ?><label>Felhasználónév: <br/><input type="text" name="nickname" placeholder="felhasználónév..." /></label> <br/><br/>
           <label>Jelszó: <br/><input type="password" name="password" placeholder="******"/></label> <br/><br/>
           <?php //próbálkozások számának ellenőrzése
             if ($countAttempts < 5) {
@@ -94,8 +95,9 @@
               echo "<h4> ❌ Elnézést! Ez az $countAttempts. sikertelen bejelentkezési próbálkozásod. Próbáld meg 5 perc múlva újra! </h4>";
             }
               ?>
-        </form>
-        <?php echo $uzenet . "<br/>"; ?>
+        <?php } ?>
+          
+        </form>        
         </fieldset>
 </form>
 <br/>
