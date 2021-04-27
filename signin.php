@@ -3,8 +3,10 @@
   include_once "dateAndsocial.php";
   include_once "footer.php";
   include "functions.php";
+
   //sütik
-  $countAttempts = 1;                    // hányszor próbált regisztrálni
+  $countAttempts=1;                    // hányszor próbált bejelentkezni
+
   if (isset($_POST["kuld"])){
   // ha már van egy, az eddigi próbálkozások számát tároló sütink, akkor betöltjük annak az értékét
   if (isset($_COOKIE["attempts"])) {
@@ -13,7 +15,6 @@
 
   // egy "attempts" nevű süti a látogatásszám tárolására, amelynek élettartama 5 perc
   setcookie("attempts", $countAttempts, time() + (60*5), "/");}
-
   
   $fiokok = loadUsers("users.txt"); 
   $uzenet = ""; 
@@ -28,7 +29,7 @@
 
       foreach ($fiokok as $fiok) {
         if ($fiok["nickname"] === $nickname && $fiok["password"] === $password) { 
-          $uzenet = "Sikeres belépés!";
+          $uzenet = "Sikeresen beléptél!";
           $_SESSION["user"] = $fiok;
         }
       }
@@ -63,19 +64,7 @@
 <?php
   dateAndsocial();
   ?><iframe class="fb" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStar-Wars-Lovers-1810298222633396&tabs&width=250&height=70&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"></iframe>
-      <?php if (isset($_SESSION["user"])) { ?>
-      <form method="GET" action="signin.php" name="range">
-        <fieldset>
-            <p class="alpont">Értékelje oldalunkat!</p><br/>
-            <input class="range_input" list="number" max="5" min="1" step="1" type="range" name="range" >
-            <input id="submit_sidenav" type="submit" value="Értékelem">
-        </fieldset>
-          <?php }  
-
-         if (isset($_GET['range'])) {              
-          echo "<h4>Köszönjük értékelésed! ".rangeSite() ;
-        }
-    ?> 
+      <?php if (isset($_SESSION["user"])) ?>
 </aside>
 <body>
 
@@ -84,15 +73,26 @@
         <fieldset>
         <legend>Belépés:</legend>
         <?php if (isset($_SESSION["user"])) {
-          echo $uzenet . "<br/>";
-          echo "<div> Belépve ".$_SESSION["user"]["nickname"] ." néven </div>";
+            setcookie("attempts", $countAttempts=1, time() -3600);
+          echo "<p class='kinalat'> ".$uzenet . "</p><br/>";
+          echo "<p class='bevezeto'> Üdvözlünk újra a világ tetején <strong> ".$_SESSION["user"]["nickname"] ."</strong>! </p>";
+          echo "<br/><br/><p class='submenu'> <br/> Életed legnagyobb kalandja kattintásokra áll tőled! Vesd bele magad
+ a felfedezésekkel és remélhetőleg kreditekkel teli jövőbe! Nálunk maga a csillagos ég sem határ, ha van elég kredited! </p>";
+ echo "<p class='submenu'> <br/>
+ Csupán annyit kell tenned, hogy egy jelképes összeget juttatsz az űrpostacímünkre, mi pedig gondoskodunk róla, hogy megfelelő helyezést
+ érhess el Toplistánkon*! Biztosíthatunk, hogy milliárdok fogják magányos éjszakáikon a(z) <strong>".$_SESSION["user"]["nickname"]."</strong> nevet
+ emlegetni, a nyilvánvaló körülményekhez mérten!
+ </p>";
+          echo"<p>*Az oldalon leírtak nem minősülnek ajánlattételnek. Oldalunk és szolgáltatásaink becsületességének megkérdőjelezése (jobb esetben) pert vagy birodalmi rohamosztagos inváziót vonhat maga után!</p>";
+
     } else{ ?><label>Felhasználónév: <br/><input type="text" name="nickname" placeholder="felhasználónév..." /></label> <br/><br/>
           <label>Jelszó: <br/><input type="password" name="password" placeholder="******"/></label> <br/><br/>
           <?php //próbálkozások számának ellenőrzése
             if ($countAttempts < 5) {
               echo "<input type='submit' name='kuld'/> <br/><br/>";
             }else{
-              echo "<h4> ❌ Elnézést! Ez az $countAttempts. sikertelen bejelentkezési próbálkozásod. Próbáld meg 5 perc múlva újra! </h4>";
+              echo "<h4> ❌ Elnézést! Nem valami szexi módon túl sokszor próbáltál helytelenül bejelentkezni. 5 perc múlva próbáld meg újra! </h4>";
+
             }
               ?>
         <?php } ?>
